@@ -4,6 +4,28 @@
 		<title>Basic Operations - Part 2</title>
 		<meta charset="utf-8">
 		<meta name="description" content="JavaScript assignments at CSM">
+     <script>
+		function calculations() {
+		var numberOne, numberTwo, numberThree;
+        const numberEntries = 3;
+		numberOne = document.forms["numberForm"].elements["firstNum"].value;
+		numberTwo = document.forms["numberForm"].elements["secondNum"].value;
+        numberThree = document.forms["numberForm"].elements["thirdNum"].value;
+        var oneData = typeof numberOne;
+        var twoData = typeof numberTwo;
+        var threeData = typeof numberThree;
+	var sum = parseInt(numberOne) + parseInt(numberTwo) + parseInt(numberThree);
+        var average = sum / numberEntries;
+        var product = numberOne * numberTwo * numberThree;
+        var smallestInt = Math.min(numberOne, numberTwo, numberThree);
+        var largestInt = Math.max(numberOne, numberTwo, numberThree);
+        if (isNaN(average) == true) {
+        document.getElementById("textResponse").innerHTML = ("One of your entries is invalid.<br>Please reset and enter a valid response.");
+        }
+        else {
+        document.getElementById("textResponse").innerHTML = ("The sum is: " + sum + "<br>The average is: " + average + "<br>The product is: " + product + "<br>The smallest number is: " + smallestInt + "<br>The largest number is: " +largestInt);}
+        }
+     </script>
     <style>
 	body {
 		background-color: gray;
@@ -20,6 +42,10 @@
 	a:active {
   		color: red;
 	}
+    label {
+    font-family: calibri;
+        color: white;
+        }
 	ul {
     	font-family: calibri;
         display: inline;
@@ -56,14 +82,23 @@
 		<header>
 			<h1>Basic Operations - Part 2</h1>
 		</header>
-         
+         <p>Please enter three numbers in the below fields:</p>
+         <form name="numberForm">
+  <label for="firstNum">First number:</label><br>
+  <input type="text" id="firstNum" name="firstNum"><br>
+  <label for="secondNum">Second number:</label><br>
+  <input type="text" id="secondNum" name="secondNum"><br>
+  <label for="thirdNum">Third number:</label><br>
+  <input type="text" id="thirdNum" name="thirdNum"><br>
+  <input type="button" onclick="calculations()" value="SUBMIT">
+	<input type="reset" value="RESET"><br>
+    <p id="textResponse"></p>
+</form>
 	<footer>
-		<p>
       <ul>
         <li><a href="hw2part1.html">Basic Operations - Part 1</a></li>
   		  <li><a href="hw2.html">Return to Basic Operations Main Page</a></li>
 		  </ul>
-    </p>
 		</footer>
 	</body>
 </html>
