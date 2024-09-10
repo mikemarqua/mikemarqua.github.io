@@ -14,16 +14,19 @@
         var oneData = typeof numberOne;
         var twoData = typeof numberTwo;
         var threeData = typeof numberThree;
-	var sum = parseInt(numberOne) + parseInt(numberTwo) + parseInt(numberThree);
+		var sum = parseInt(numberOne) + parseInt(numberTwo) + parseInt(numberThree);
         var average = sum / numberEntries;
         var product = numberOne * numberTwo * numberThree;
         var smallestInt = Math.min(numberOne, numberTwo, numberThree);
         var largestInt = Math.max(numberOne, numberTwo, numberThree);
         if (isNaN(average) == true) {
-        document.getElementById("textResponse").innerHTML = ("One or more of your entries is invalid.<br>Please reset and enter a valid response.");
+        document.getElementById("textResponse").innerHTML = ("One of your entries is invalid.<br>Please reset and enter a valid response.");
         }
         else {
         document.getElementById("textResponse").innerHTML = ("The sum is: " + sum + "<br>The average is: " + average + "<br>The product is: " + product + "<br>The smallest number is: " + smallestInt + "<br>The largest number is: " +largestInt);}
+        }
+        function clearInputField() {
+            document.getElementById("textResponse").innerHTML = '';
         }
      </script>
     <style>
@@ -91,7 +94,7 @@
   <label for="thirdNum">Third number:</label><br>
   <input type="text" id="thirdNum" name="thirdNum"><br>
   <input type="button" onclick="calculations()" value="SUBMIT">
-	<input type="reset" value="RESET"><br>
+	<input type="reset" onclick="clearInputField()" value="RESET"><br>
     <p id="textResponse"></p>
 </form>
 	<footer>
