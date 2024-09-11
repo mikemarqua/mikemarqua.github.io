@@ -20,7 +20,7 @@
         var smallestInt = Math.min(numberOne, numberTwo, numberThree);
         var largestInt = Math.max(numberOne, numberTwo, numberThree);
         if (isNaN(average) == true) {
-        document.getElementById("textResponse").innerHTML = ("One or more of your entries is invalid.<br>Please reset and enter a valid response.");
+        document.getElementById("textResponse").innerHTML = ("One or more of your entries is invalid; all entries should only be numbers.<br>Please fix your error and retry.");
         }
         else {
         document.getElementById("textResponse").innerHTML = ("The sum is: " + sum + "<br>The average is: " + average + "<br>The product is: " + product + "<br>The smallest number is: " + smallestInt + "<br>The largest number is: " +largestInt);}
