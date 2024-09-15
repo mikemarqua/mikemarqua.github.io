@@ -4,104 +4,107 @@
 		<title>Basic Operations - Part 2</title>
 		<meta charset="utf-8">
 		<meta name="description" content="JavaScript assignments at CSM, JavaScript with functions and form">
-     <script>
+     	<script>
 		function calculations() {
 		var numberOne, numberTwo, numberThree;
-        const numberEntries = 3;
+		//set final int for number of entries; prompt confirms we will expect three
+        	const numberEntries = 3;
+		//set variables by entries from form numberForm and each entry in order
 		numberOne = document.forms["numberForm"].elements["firstNum"].value;
 		numberTwo = document.forms["numberForm"].elements["secondNum"].value;
-        numberThree = document.forms["numberForm"].elements["thirdNum"].value;
-        var oneData = typeof numberOne;
-        var twoData = typeof numberTwo;
-        var threeData = typeof numberThree;
+        	numberThree = document.forms["numberForm"].elements["thirdNum"].value;
+		//convert user entries from strings to integers, then add all together to equal sum
 		var sum = parseInt(numberOne) + parseInt(numberTwo) + parseInt(numberThree);
-        var average = sum / numberEntries;
-        var product = numberOne * numberTwo * numberThree;
-        var smallestInt = Math.min(numberOne, numberTwo, numberThree);
-        var largestInt = Math.max(numberOne, numberTwo, numberThree);
-        if (isNaN(average) == true) {
-        document.getElementById("textResponse").innerHTML = ("One or more of your entries is invalid; all entries should only be numbers.<br>Please fix your error and retry.");
-        }
-        else {
-        document.getElementById("textResponse").innerHTML = ("The sum is: " + sum + "<br>The average is: " + average + "<br>The product is: " + product + "<br>The smallest number is: " + smallestInt + "<br>The largest number is: " +largestInt);}
-        }
-        function clearInputField() {
-            document.getElementById("textResponse").innerHTML = '';
-        }
-     </script>
-    <style>
-	body {
-		background-color: gray;
-        }
-	a:link {
-  		color: white;
-	}
-	a:visited {
-  		color: yellow;
-	}
-	a:hover {
-  		color: black;
+        	var average = sum / numberEntries;
+        	var product = numberOne * numberTwo * numberThree;
+        	var smallestInt = Math.min(numberOne, numberTwo, numberThree);
+        	var largestInt = Math.max(numberOne, numberTwo, numberThree);
+		//output error message if one of the user entries is a non-integer, therefore setting the average to NaN
+        	if (isNaN(average) == true) {
+        		document.getElementById("textResponse").innerHTML = ("One or more of your entries is invalid; all entries should only be numbers.<br>Please fix your error and retry.");
+        	}
+		//output all calculations if average is not NaN
+        	else {
+        		document.getElementById("textResponse").innerHTML = ("The sum is: " + sum + "<br>The average is: " + average + "<br>The product is: " + product + "<br>The smallest number is: " + smallestInt + "<br>The largest number is: " +largestInt);}
+        	}
+		//set textResponse field to empty; function activated if reset button is pressed
+        	function clearInputField() {
+            		document.getElementById("textResponse").innerHTML = '';
+        	}
+     	</script>
+    	<style>
+		body {
+			background-color: gray;
+        	}
+		a:link {
+  			color: white;
 		}
-	a:active {
-  		color: red;
-	}
-    label {
-    font-family: calibri;
-        color: white;
-        }
-	ul {
-    	font-family: calibri;
-        display: inline;
-        color: white;
-        }
-    li {
-    	background-color: transparent; 
-        border-radius: 2px;
-  		text-align: left;
-  		font-size: 16px;
-  		cursor: pointer;
-        }
-    li:hover {
-    	background-color: white;
-        color: black;
-        width: fit-content;
-        }
-    h1 {
-    	font-family: calibri;
-	color: white;
-        }
-    footer {
-    	font-family: calibri;
-        font-size: 80%;
-	color: white;
-        }
-	p {
-    	font-family: calibri;
-	color: white;
-        }
-    </style>
+		a:visited {
+  			color: yellow;
+		}
+		a:hover {
+  			color: black;
+			}
+		a:active {
+  			color: red;
+		}
+    		label {
+    			font-family: calibri;
+        		color: white;
+        	}
+		ul {
+    			font-family: calibri;
+        		display: inline;
+        		color: white;
+        	}
+    		li {
+    			background-color: transparent; 
+        		border-radius: 2px;
+  			text-align: left;
+  			font-size: 16px;
+  			cursor: pointer;
+        	}
+    		li:hover {
+    			background-color: white;
+        		color: black;
+        		width: fit-content;
+        	}
+    		h1 {
+    			font-family: calibri;
+			color: white;
+        	}
+    		footer {
+    			font-family: calibri;
+        		font-size: 80%;
+			color: white;
+        	}
+		p {
+    			font-family: calibri;
+			color: white;
+        	}
+    	</style>
 	</head>
 	<body>
 		<header>
 			<h1>Basic Operations - Part 2</h1>
 		</header>
-         <p>Please enter three numbers in the below fields:</p>
-         <form name="numberForm">
-  <label for="firstNum">First number:</label><br>
-  <input type="text" id="firstNum" name="firstNum"><br>
-  <label for="secondNum">Second number:</label><br>
-  <input type="text" id="secondNum" name="secondNum"><br>
-  <label for="thirdNum">Third number:</label><br>
-  <input type="text" id="thirdNum" name="thirdNum"><br>
-  <input type="button" onclick="calculations()" value="SUBMIT">
-	<input type="reset" onclick="clearInputField()" value="RESET"><br>
-    <p id="textResponse"></p>
-</form>
+         	<p>Please enter three numbers in the below fields:</p>
+         	<form name="numberForm">
+  		<label for="firstNum">First number:</label><br>
+  		<input type="text" id="firstNum" name="firstNum"><br>
+  		<label for="secondNum">Second number:</label><br>
+  		<input type="text" id="secondNum" name="secondNum"><br>
+  		<label for="thirdNum">Third number:</label><br>
+  		<input type="text" id="thirdNum" name="thirdNum"><br>
+  		<input type="button" onclick="calculations()" value="SUBMIT">
+		<input type="reset" onclick="clearInputField()" value="RESET"><br>
+    		<p id="textResponse"></p>
+	</form>
 	<footer>
-      <ul>
-        <li><a href="hw2part1.html">Basic Operations - Part 1</a></li>
-  		  <li><a href="hw2.html">Return to Basic Operations Main Page</a></li>
-		  </ul>
-		</footer>
+      		<ul>
+        		<li><a href="hw2part1.html">Basic Operations - Part 1</a></li>
+  		  	<li><a href="hw2.html">Return to Basic Operations Main Page</a></li>
+		</ul>
+	</footer>
 	</body>
 </html>
