@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+	<html lang="en">
+	<head>
+		<title>Student Grades</title>
+		<meta charset="utf-8">
+		<meta name="description" content="JavaScript assignments at CSM, JavaScript with functions and calculations">
+     	<script>
+		function gradeCalculator() {
+		var homeworkAverage, midTermScore, finalScore, participationScore;
+    var letterGrade;
+    const homeworkMultiplier = .5;
+    const examMultiplier = .2;
+    const participationMultiplier = .1;
+		homeworkAverage = document.forms["studentGrades"].elements["homeworkAverage"].value;
+		midTermScore = document.forms["studentGrades"].elements["midTermExam"].value;
+    finalScore = document.forms["studentGrades"].elements["finalExam"].value;
+    participationScore = document.forms["studentGrades"].elements["participation"].value;
+		var finalAverage = (parseInt(homeworkAverage) * homeworkMultiplier) + (parseInt(midTermScore) * examMiltiplier) + (parseInt(finalScore) * examMiltiplier) + (parseInt(participationScore) * participationMultiplier);
+    if(finalAverage >= 90) {
+      letterGrade = "A";
+    }
+    else if(finalAverage >= 80) {
+      letterGrade = "B";
+    }
+    else if(finalAverage >= 70) {
+      letterGrade = "C";
+    }
+    else if(finalAverage >= 60) {
+      letterGrade = "D";
+    }
+    else {
+      letterGrade = "F";
+    }
+		//output error message if one of the user entries is a non-integer, therefore setting the average to NaN
+        	if (isNaN(finalAverage) == true) {
+        		document.getElementById("textResponse").innerHTML = ("One or more of your entries is invalid; all entries should only be numbers.<br>Please fix your error and retry.");
+        	}
+		//output all calculations if average is not NaN
+        	else {
+            if(letterGrade = "A") {
+              document.getElementById("textResponse").innerHTML = ("The student's final average is: " + finalAverage + "<br>The student has earned an A ");
+              }
+            else if((letterGrade = "B") || (letterGrade = "C")) {
+              document.getElementById("textResponse").innerHTML = ("The student's final average is: " + finalAverage + "<br>The student has earned a " + letterGrade);
+            }
+            else {
+              document.getElementById("textResponse").innerHTML = ("The student's final average is: " + finalAverage + "<br>The student must retake the course");
+        	}
+		//set textResponse field to empty; function activated if reset button is pressed
+        	function clearInputField() {
+            		document.getElementById("textResponse").innerHTML = '';
+        	}
+     	</script>
+    	<style>
+		body {
+			background-color: gray;
+        	}
+		a:link {
+  			color: white;
+		}
+		a:visited {
+  			color: yellow;
+		}
+		a:hover {
+  			color: black;
+			}
+		a:active {
+  			color: red;
+		}
+    		label {
+    			font-family: calibri;
+        		color: white;
+        	}
+		ul {
+    			font-family: calibri;
+        		display: inline;
+        		color: white;
+        	}
+    		li {
+    			background-color: transparent; 
+        		border-radius: 2px;
+  			text-align: left;
+  			font-size: 16px;
+  			cursor: pointer;
+        	}
+    		li:hover {
+    			background-color: white;
+        		color: black;
+        		width: fit-content;
+        	}
+    		h1 {
+    			font-family: calibri;
+			color: white;
+        	}
+    		footer {
+    			font-family: calibri;
+        		font-size: 80%;
+			color: white;
+        	}
+		p {
+    			font-family: calibri;
+			color: white;
+        	}
+    	</style>
+	</head>
+	<body>
+		<header>
+			<h1>Student Grades</h1>
+		</header>
+         	<p>Please enter the student's grades for each section:</p>
+         	<form name="studentGrades">
+  		<label for="homeworkAverage">Homework Average:</label><br>
+  		<input type="text" id="homeworkAverage" name="homeworkAverage"><br>
+  		<label for="midTermExam">Mid-Term Exam Score:</label><br>
+  		<input type="text" id="midTermExam" name="midTermExam"><br>
+  		<label for="finalExam">Final Exam Score:</label><br>
+  		<input type="text" id="finalExam" name="finalExam"><br>
+      <label for="participation">Participation:</label><br>
+  		<input type="text" id="participation" name="participation"><br>
+  		<input type="button" onclick="gradeCalculator()" value="SUBMIT">
+		<input type="reset" onclick="clearInputField()" value="RESET"><br>
+    		<p id="textResponse"></p>
+	</form>
+	<footer>
+      		<ul>
+        		<li><a href="hw3part2.html">Functions - Part 2</a></li>
+  		  	<li><a href="hw3.html">Return to Functions Main Page</a></li>
+		</ul>
+	</footer>
+	</body>
+</html>
