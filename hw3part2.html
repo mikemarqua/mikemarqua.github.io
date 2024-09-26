@@ -9,6 +9,10 @@
     	<style>
 		body {
 			background-color: gray;
+            width: 500px;
+  		border: 2px solid blue;
+  		padding: 20px;
+  		margin: 20px;
         	}
 		a:link {
   			color: white;
@@ -26,7 +30,6 @@
     			font-family: calibri;
         		color: white;
                 display: inline-block;
-                width: 150px;
         	}
 		ul {
     			font-family: calibri;
@@ -57,7 +60,11 @@
 		p {
     			font-family: calibri;
 			color: white;
-        	}
+        }
+        td {
+        font-family: calibri;
+			color: white
+            }
     	</style>
 	</head>
 	<body>
@@ -66,7 +73,7 @@
 		</header>
          	<form name="sellerData">
   		<label for="sellersName">Seller's Name:</label>
-  		<input type="text" id="sellersName" name="sellersName"><br><br>
+  		<input type="text" id="sellersName" name="sellersName"><br>
       <p>For each item, type the quantity sold by the seller</p>
   		<label for="item1">Item 1:</label>
   		<input type="text" id="item1" name="item1"><br><br>
@@ -76,15 +83,60 @@
   		<input type="text" id="item3" name="item3"><br><br>
       <label for="item4">Item 4:</label>
   		<input type="text" id="item4" name="item4"><br><br>
-  		<input type="button" onclick="sellerEarnings()" value="Submit">
+  		<input type="button" onclick="sellerEarnings()" value="Submit"><br><br>
 		<input type="reset" onclick="clearInputField()" value="Clear Form"><br>
-    		<p id="textResponse"></p>
 	</form>
+        	<table id="resultsTable">
+  			<tr>
+    		<td>Item#</td>
+    		<td>Price</td>
+            <td>Qty Sold</td>
+            <td>Total $</td>
+  			</tr>
+  			<tr>
+    		<td>1</td>
+    		<td>$20.99</td>
+            <td><input id="item1Sold" name="item1Sold" type="number" readonly></td>
+            <td><input id="item1Total" name="item1Total" type="number" readonly></td>
+  			</tr>
+            <tr>
+    		<td>2</td>
+    		<td>$12.75</td>
+            <td><input id="item2Sold" name="item2Sold" type="number" readonly></td>
+            <td><input id="item2Total" name="item2Total" type="number" readonly></td>
+  			</tr>
+            <tr>
+    		<td>3</td>
+    		<td>$19.95</td>
+            <td><input id="item3Sold" name="item3Sold" type="number" readonly></td>
+            <td><input id="item3Total" name="item3Total" type="number" readonly></td>
+  			</tr>
+            <tr>
+    		<td>4</td>
+    		<td>$35.89</td>
+            <td><input id="item4Sold" name="item4Sold" type="number" readonly></td>
+            <td><input id="item4Total" name="item4Total" type="number" readonly></td>
+  			</tr>
+            </table>
+            <table>
+            <tr>
+            <td>Total Amount Sold</td>
+    		<td></td>
+            <td></td>
+            <td><input id="totalAmtSold" name="totalAmtSold" type="number" readonly></td>
+  			</tr>
+            <tr>
+            <td>Total Weekly Earnings</td>
+    		<td></td>
+            <td></td>
+            <td><input id="totalWeekEarnings" name="totalWeekEarnings" type="number" readonly></td>
+  			</tr>
+			</table>
 	<footer>
-      		<ul>
+                  		<ul>
         		<li><a href="hw3part1.html">Functions - Part 1</a></li>
   		  	<li><a href="hw3.html">Return to Functions Main Page</a></li>
-		</ul>
+            		</ul>
 	</footer>
-	</body>
+     </body>
 </html>
