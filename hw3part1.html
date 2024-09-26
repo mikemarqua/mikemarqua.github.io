@@ -8,21 +8,35 @@
 		function gradeCalculator() {
 		var homeworkAverage, midTermScore, finalScore, participationScore;
     		var letterGrade;
+            	var entryInvalid;
     		const homeworkMultiplier = .5;
     		const examMultiplier = .2;
     		const participationMultiplier = .1;
     		const minNumber = 0;
    		const maxNumber = 100;
+        	//read in user entries to each grade location; separately convert each string to integer
 		homeworkAverage = document.forms["studentGrades"].elements["homeworkAverage"].value;
+        	homeworkAverage = parseInt(homeworkAverage);
 		midTermScore = document.forms["studentGrades"].elements["midTermExam"].value;
+        	midTermScore = parseInt(midTermScore);
     		finalScore = document.forms["studentGrades"].elements["finalExam"].value;
-    		participationScore = document.forms["studentGrades"].elements["participation"].value;
+        	finalScore = parseInt(finalScore);
+        	participationScore = document.forms["studentGrades"].elements["participation"].value;
+        	participationScore = parseInt(participationScore);
     		//calculate final average based on provided formula & score multipliers
-		var finalAverage = (parseInt(homeworkAverage) * homeworkMultiplier) + (parseInt(midTermScore) * examMultiplier) + (parseInt(finalScore) * examMultiplier) + (parseInt(participationScore) * participationMultiplier);
+		var finalAverage = (homeworkAverage * homeworkMultiplier) + (midTermScore * examMultiplier) + (finalScore * examMultiplier) + (participationScore * participationMultiplier);
     		//round final average to nearest full integer
 		finalAverage = Math.round(finalAverage);
-    		//determine letter grade based on final average value
-    		if(finalAverage >= 90) {
+		//check if one of the user entries is a non-integer; finalAverage will equate to NaN if so
+        	if(Number.isNaN(finalAverage) == true) {
+        		entryInvalid = true;
+        	}
+    		//check to see if any of the user entries are outside 0 to 100 parameter
+            	if((homeworkAverage > maxNumber) || (homeworkAverage < minNumber) || (midTermScore > maxNumber) || (midTermScore < minNumber) || (finalScore > maxNumber) || (finalScore < minNumber) || (participationScore > maxNumber) || (participationScore < minNumber)) {
+			entryInvalid = true;
+                }
+		//determine letter grade based on final average value
+            	else if(finalAverage >= 90) {
       			letterGrade = "A";
     		}
     		else if(finalAverage >= 80) {
@@ -37,8 +51,8 @@
     		else if(finalAverage >= 0) {
       			letterGrade = "F";
     		}
-		//output error message if one of the user entries is a non-integer, therefore setting the final average to NaN
-        	if(Number.isNaN(finalAverage) == true) {
+		//output error message if user entered non-integer or integer outside 0 to 100 parameter
+        	if(entryInvalid == true) {
         		document.getElementById("textResponse").innerHTML = ("One or more of your entries is invalid; all entries should be numbers between 0 and 100.<br>Please fix your error and retry.");
         	}
 		//output all calculations if average is not NaN
