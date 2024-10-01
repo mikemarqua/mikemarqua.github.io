@@ -5,14 +5,64 @@
 		<meta charset="utf-8">
 		<meta name="description" content="JavaScript assignments at CSM, JavaScript with functions and calculations">
      	<script>
+		function sellerEarnings() {
+			var sellerName, item1Qty, item2Qty, item3Qty, item4Qty, item1Total, item2Total, item3Total, item4Total, totalSold, totalEarnings;
+        		const item1Price = 20.99;
+        		const item2Price = 12.75;
+	        	const item3Price = 19.95;
+	        	const item4Price = 35.89;
+	        	const weeklySalary = 250;
+	        	const percentOfSales = .09;
+	       		//read in user entries for name and quantity of each item sold; separately convert each string to integer
+	        	sellersName = document.forms["sellerData"].elements["sellersName"].value;
+	        	item1Qty = document.forms["sellerData"].elements["item1"].value;
+	        	item2Qty = document.forms["sellerData"].elements["item2"].value;
+	        	item3Qty = document.forms["sellerData"].elements["item3"].value;
+	        	item4Qty = document.forms["sellerData"].elements["item4"].value;
+	        	//calculate total sold for each item
+	        	item1Total = (item1Qty * item1Price).toFixed(2);
+	        	item2Total = (item2Qty * item2Price).toFixed(2);
+	        	item3Total = (item3Qty * item3Price).toFixed(2);
+	        	item4Total = (item4Qty * item4Price).toFixed(2);
+	        	//calculate total amount sold
+	        	totalSold = (parseFloat(item1Total) + parseFloat(item2Total) + parseFloat(item3Total) + parseFloat(item4Total)).toFixed(2);
+	        	//calculate total earnings
+	        	totalEarnings = (weeklySalary + (totalSold * percentOfSales)).toFixed(2);
+	        	//output calculations into read only tables
+	        	document.getElementById("item1Sold").value = item1Qty;
+	        	document.getElementById("item2Sold").value = item2Qty;
+	        	document.getElementById("item3Sold").value = item3Qty;
+	        	document.getElementById("item4Sold").value = item4Qty;
+	        	document.getElementById("item1Total").value = item1Total;
+	        	document.getElementById("item2Total").value = item2Total;
+	        	document.getElementById("item3Total").value = item3Total;
+	        	document.getElementById("item4Total").value = item4Total;
+	        	document.getElementById("totalAmtSold").value = totalSold;
+	        	document.getElementById("totalWeekEarnings").value = totalEarnings;
+	        	}
+		//set textResponse field to empty; function activated if reset button is pressed
+        	function clearAllFields() {
+			document.getElementById("totalAmtSold").value = '';
+                    	document.getElementById("totalWeekEarnings").value = '';
+                   	document.getElementById("item1Sold").value = '';
+                    	document.getElementById("item1Total").value = '';
+                    	document.getElementById("item2Sold").value = '';
+                    	document.getElementById("item2Total").value = '';
+                    	document.getElementById("item3Sold").value = '';
+                    	document.getElementById("item3Total").value = '';
+                    	document.getElementById("item4Sold").value = '';
+                    	document.getElementById("item4Total").value = '';
+        	}
      	</script>
     	<style>
 		body {
 			background-color: gray;
-            width: 500px;
-  		border: 2px solid blue;
-  		padding: 20px;
-  		margin: 20px;
+            	}
+         	div {
+         		width: 500px;
+           		border: 2px solid blue;
+  			padding: 20px;
+        		margin: 20px;
         	}
 		a:link {
   			color: white;
@@ -29,7 +79,7 @@
     		label {
     			font-family: calibri;
         		color: white;
-                display: inline-block;
+                	display: inline-block;
         	}
 		ul {
     			font-family: calibri;
@@ -60,83 +110,89 @@
 		p {
     			font-family: calibri;
 			color: white;
-        }
-        td {
-        font-family: calibri;
-			color: white
-            }
+        	}
+        	td {
+        		font-family: calibri;
+			color: white;
+            	}
+        	th {
+        		font-family: calibri;
+			color: white;
+        	}
     	</style>
 	</head>
 	<body>
+    		<div class="earnings">
 		<header>
 			<h1>Salesperson Earnings</h1>
 		</header>
          	<form name="sellerData">
-  		<label for="sellersName">Seller's Name:</label>
-  		<input type="text" id="sellersName" name="sellersName"><br>
-      <p>For each item, type the quantity sold by the seller</p>
-  		<label for="item1">Item 1:</label>
-  		<input type="text" id="item1" name="item1"><br><br>
-  		<label for="item2">Item 2:</label>
-  		<input type="text" id="item2" name="item2"><br><br>
-      <label for="item3">Item 3:</label>
-  		<input type="text" id="item3" name="item3"><br><br>
-      <label for="item4">Item 4:</label>
-  		<input type="text" id="item4" name="item4"><br><br>
-  		<input type="button" onclick="sellerEarnings()" value="Submit"><br><br>
-		<input type="reset" onclick="clearInputField()" value="Clear Form"><br>
-	</form>
-        	<table id="resultsTable">
+  			<label for="sellersName">Seller's Name:</label>
+  			<input type="text" id="sellersName" name="sellersName"><br>
+      			<p>For each item, type the quantity sold by the seller</p>
+  			<label for="item1">Item 1:</label>
+  			<input type="number" id="item1" name="item1"><br><br>
+  			<label for="item2">Item 2:</label>
+  			<input type="number" id="item2" name="item2"><br><br>
+      			<label for="item3">Item 3:</label>
+  			<input type="number" id="item3" name="item3"><br><br>
+      			<label for="item4">Item 4:</label>
+  			<input type="number" id="item4" name="item4"><br><br>
+  			<input type="button" onclick="sellerEarnings()" value="Submit"><br><br>
+			<input type="reset" onclick="clearAllFields()" value="Clear Form"><br>
+		</form>
+        	<table id="itemsTable">
   			<tr>
-    		<td>Item#</td>
-    		<td>Price</td>
-            <td>Qty Sold</td>
-            <td>Total $</td>
+    			<th>Item#</th>
+    			<th>Price</th>
+           	 	<th>Qty Sold</th>
+           		<th>Total $</th>
   			</tr>
   			<tr>
-    		<td>1</td>
-    		<td>$20.99</td>
-            <td><input id="item1Sold" name="item1Sold" type="number" readonly></td>
-            <td><input id="item1Total" name="item1Total" type="number" readonly></td>
+    			<td>1</td>
+    			<td>$20.99</td>
+            		<td><input id="item1Sold" name="item1Sold" type="number" readonly></td>
+            		<td><input id="item1Total" name="item1Total" type="number" readonly></td>
   			</tr>
-            <tr>
-    		<td>2</td>
-    		<td>$12.75</td>
-            <td><input id="item2Sold" name="item2Sold" type="number" readonly></td>
-            <td><input id="item2Total" name="item2Total" type="number" readonly></td>
+            		<tr>
+    			<td>2</td>
+    			<td>$12.75</td>
+           		<td><input id="item2Sold" name="item2Sold" type="number" readonly></td>
+            		<td><input id="item2Total" name="item2Total" type="number" readonly></td>
   			</tr>
-            <tr>
-    		<td>3</td>
-    		<td>$19.95</td>
-            <td><input id="item3Sold" name="item3Sold" type="number" readonly></td>
-            <td><input id="item3Total" name="item3Total" type="number" readonly></td>
+            		<tr>
+    			<td>3</td>
+    			<td>$19.95</td>
+           	 	<td><input id="item3Sold" name="item3Sold" type="number" readonly></td>
+            		<td><input id="item3Total" name="item3Total" type="number" readonly></td>
   			</tr>
-            <tr>
-    		<td>4</td>
-    		<td>$35.89</td>
-            <td><input id="item4Sold" name="item4Sold" type="number" readonly></td>
-            <td><input id="item4Total" name="item4Total" type="number" readonly></td>
+            		<tr>
+    			<td>4</td>
+    			<td>$35.89</td>
+            		<td><input id="item4Sold" name="item4Sold" type="number" readonly></td>
+            		<td><input id="item4Total" name="item4Total" type="number" readonly></td>
   			</tr>
-            </table>
-            <table>
-            <tr>
-            <td>Total Amount Sold</td>
-    		<td></td>
-            <td></td>
-            <td><input id="totalAmtSold" name="totalAmtSold" type="number" readonly></td>
+            	</table>
+		<table id ="totalTable" style="width:114.5%">
+            		<tr>
+            		<td>Total Amount Sold</td>
+            		<td></td>
+            		<td></td>
+            		<td><input id="totalAmtSold" name="totalAmtSold" type="number" readonly></td>
   			</tr>
-            <tr>
-            <td>Total Weekly Earnings</td>
-    		<td></td>
-            <td></td>
-            <td><input id="totalWeekEarnings" name="totalWeekEarnings" type="number" readonly></td>
+            		<tr>
+            		<td>Total Weekly Earnings</td>
+            		<td></td>
+            		<td></td>
+            		<td><input id="totalWeekEarnings" name="totalWeekEarnings" type="number" readonly></td>
   			</tr>
-			</table>
+		</table>
+            	</div>
 	<footer>
-                  		<ul>
+    		<ul>
         		<li><a href="hw3part1.html">Functions - Part 1</a></li>
   		  	<li><a href="hw3.html">Return to Functions Main Page</a></li>
-            		</ul>
+		</ul>
 	</footer>
      </body>
 </html>
