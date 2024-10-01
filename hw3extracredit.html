@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+	<html lang="en">
+	<head>
+		<title>Multiplication Sensation</title>
+		<meta charset="utf-8">
+		<meta name="description" content="JavaScript assignments at CSM, JavaScript with functions and calculations">
+     	<script>
+            var firstNum; secondNum; submitButton; yesButton; noButton; userField;
+        function initialLoad() {
+        	yesButton = document.getElementById("yesBtn");
+            noButton = document.getElementById("noBtn");
+            yesButton.style.display = "none";
+            noButton.style.display = "none";
+            multiplyPrompt();
+            }
+        function multiplyPrompt() {
+            firstNum = Math.floor(Math.random() * 9) + 1;
+            secondNum = Math.floor(Math.random() * 9) + 1;
+            document.getElementById("multiplyPrompt").innerHTML = ("How much is " + firstNum + " times " + secondNum + "?");
+                }
+        function multiplyCalculation() {
+        	var userEntry = document.getElementById("userAnswer").value;
+            var answer = firstNum * secondNum;
+            userEntry = parseInt(userEntry);
+            if(userEntry == answer) {
+            document.getElementById("multiplyAnswer").innerHTML = ("That's correct, very good!<br>Would you like to play again?");
+            yesButton = document.getElementById("yesBtn");
+            noButton = document.getElementById("noBtn");
+            yesButton.style.display = "inline";
+            noButton.style.display = "inline";
+                }
+            else {
+            document.getElementById("multiplyAnswer").innerHTML = ("That's incorrect, please try again.");
+                }
+        	}
+         function playAgain() {
+         	yesButton = document.getElementById("yesBtn");
+            noButton = document.getElementById("noBtn");
+            yesButton.style.display = "none";
+            noButton.style.display = "none";
+         	document.getElementById("userAnswer").value = '';
+            document.getElementById("multiplyAnswer").innerHTML = '';
+            document.getElementById("closeGame").innerHTML = '';
+            multiplyPrompt();
+         	}
+         function closeGame() {
+         	submitButton = document.getElementById("submitBtn");
+            yesButton = document.getElementById("yesBtn");
+            noButton = document.getElementById("noBtn");
+            userField = document.getElementById("userAnswer");
+            yesButton.style.display = "none";
+            noButton.style.display = "none";
+            submitButton.style.display = "none";
+            userField.style.display = "none";
+         	document.getElementById("userAnswer").value = '';
+            document.getElementById("multiplyAnswer").innerHTML = '';
+         	document.getElementById("closeGame").innerHTML = ("Thanks for playing, see you next time!");
+                }
+		//set textResponse field to empty; function activated if reset button is pressed
+        	function clearInputField() {
+			document.getElementById("userAnswer").value = '';
+            document.getElementById("multiplyAnswer").innerHTML = '';
+            multiplyPrompt();
+        	}
+     	</script>
+    	<style>
+		body {
+			background-color: gray;
+            	}
+         	div {
+         		width: 500px;
+           		border: 2px solid blue;
+  			padding: 20px;
+        		margin: 20px;
+        	}
+		a:link {
+  			color: white;
+		}
+		a:visited {
+  			color: yellow;
+		}
+		a:hover {
+  			color: black;
+			}
+		a:active {
+  			color: red;
+		}
+    		label {
+    			font-family: calibri;
+        		color: white;
+                	display: inline-block;
+        	}
+		ul {
+    			font-family: calibri;
+        		display: inline;
+        		color: white;
+        	}
+    		li {
+    			background-color: transparent; 
+        		border-radius: 2px;
+  			text-align: left;
+  			font-size: 16px;
+  			cursor: pointer;
+        	}
+    		li:hover {
+    			background-color: white;
+        		color: black;
+        		width: fit-content;
+        	}
+    		h1 {
+    			font-family: calibri;
+			color: white;
+        	}
+    		footer {
+    			font-family: calibri;
+        		font-size: 80%;
+			color: white;
+        	}
+		p {
+    			font-family: calibri;
+			color: white;
+        	}
+        	td {
+        		font-family: calibri;
+			color: white;
+            	}
+        	th {
+        		font-family: calibri;
+			color: white;
+        	}
+    	</style>
+	</head>
+	<body onload="initialLoad()">
+		<header>
+			<h1>The Multiplication Sensation</h1>
+		</header>
+           		<p>This is a game to help you practice your multiplication skills</p><br>
+      			<p id="multiplyPrompt"></p>
+                <form name="userAnswer">
+                <input type="number" id="userAnswer" name="userAnswer"><br>
+                <input type="button" id="submitBtn" onclick="multiplyCalculation()" value="SUBMIT">
+                <p id="multiplyAnswer"></p>
+		</form>
+        <input type="button" id="yesBtn" onclick="playAgain()" value="YES">
+        <input type="button" id="noBtn" onclick="closeGame()" value="NO"><br>
+        		<p id="closeGame"></p>
+	<footer>
+    		<ul>
+        		<li><a href="hw3part1.html">Functions - Part 1</a></li>
+                <li><a href="hw3part2.html">Functions - Part 2</a></li>
+  		  	<li><a href="hw3.html">Return to Functions Main Page</a></li>
+		</ul>
+	</footer>
+     </body>
+</html>
