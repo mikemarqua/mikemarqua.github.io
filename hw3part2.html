@@ -6,7 +6,7 @@
 		<meta name="description" content="JavaScript assignments at CSM, JavaScript with functions and calculations">
      	<script>
 		function sellerEarnings() {
-			var sellerName, item1Qty, item2Qty, item3Qty, item4Qty, item1Total, item2Total, item3Total, item4Total, totalSold, totalEarnings;
+			var sellerName, item1Qty, item2Qty, item3Qty, item4Qty, item1Total, item2Total, item3Total, item4Total, totalSold, totalEarnings, entryInvalid;
         		const item1Price = 20.99;
         		const item2Price = 12.75;
 	        	const item3Price = 19.95;
@@ -29,6 +29,11 @@
 	        	//calculate total earnings
 	        	totalEarnings = (weeklySalary + (totalSold * percentOfSales)).toFixed(2);
 	        	//output calculations into read only tables
+                if((item1Qty < 0) || (item2Qty < 0) || (item3Qty < 0) || (item4Qty < 0)) {
+					entryInvalid = true;
+                    document.getElementById("invalidResponse").innerHTML = "One of your entries is less than 0. All item quantities must be equal to or greater than 0";
+                }
+                else {
 	        	document.getElementById("item1Sold").value = item1Qty;
 	        	document.getElementById("item2Sold").value = item2Qty;
 	        	document.getElementById("item3Sold").value = item3Qty;
@@ -39,6 +44,7 @@
 	        	document.getElementById("item4Total").value = item4Total;
 	        	document.getElementById("totalAmtSold").value = totalSold;
 	        	document.getElementById("totalWeekEarnings").value = totalEarnings;
+                }
 	        	}
 		//set textResponse field to empty; function activated if reset button is pressed
         	function clearAllFields() {
@@ -52,6 +58,7 @@
                     	document.getElementById("item3Total").value = '';
                     	document.getElementById("item4Sold").value = '';
                     	document.getElementById("item4Total").value = '';
+                        document.getElementById("invalidResponse").innerHTML = '';
         	}
      	</script>
     	<style>
@@ -140,6 +147,7 @@
   			<input type="number" id="item4" name="item4"><br><br>
   			<input type="button" onclick="sellerEarnings()" value="Submit"><br><br>
 			<input type="reset" onclick="clearAllFields()" value="Clear Form"><br>
+            <p id="invalidResponse"></p>
 		</form>
         	<table id="itemsTable">
   			<tr>
