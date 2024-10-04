@@ -53,6 +53,7 @@
             submitButton.style.display = "none";
             userField.style.display = "none";
          	document.getElementById("userAnswer").value = '';
+            document.getElementById("multiplyPrompt").innerHTML = '';
             document.getElementById("multiplyAnswer").innerHTML = '';
          	document.getElementById("closeGame").innerHTML = ("Thanks for playing, see you next time!");
                 }
@@ -135,8 +136,8 @@
 			<h1>The Multiplication Sensation</h1>
 		</header>
            		<p>This is a game to help you practice your multiplication skills</p><br>
-      			<p id="multiplyPrompt"></p>
                 <form name="userAnswer">
+                <label id="multiplyPrompt"></label><br>
                 <input type="number" id="userAnswer" name="userAnswer"><br>
                 <input type="button" id="submitBtn" onclick="multiplyCalculation()" value="SUBMIT">
                 <p id="multiplyAnswer"></p>
