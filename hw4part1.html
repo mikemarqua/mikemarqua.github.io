@@ -5,129 +5,129 @@
 		<meta charset="utf-8">
 		<meta name="description" content="JavaScript assignments at CSM, JavaScript with for and while looping statements">
     <script>
-		function forStatement() {
-      var productRaw = 1;
-      var sum = 0;
-      //begin with for loop starting at 5, then increasing by four each iteration until number is less than or equal to 25
-      for(var number = 5; number <= 25; number+=4) {
-        sum = sum + number;
-        productRaw = productRaw * number;
-        product = productRaw.toLocaleString();
-        }
-        document.getElementById("textResponseOne").innerHTML = ("The result of 5 * 9 * 13 * 17 * 21 * 25 is: " + product  + "<br>The result of 5 + 9 + 13 + 17 + 21 + 25 is: " + sum);
-        document.getElementById("textResponseOneBlur").innerHTML = ("The result of 5 * 9 * 13 * 17 * 21 * 25 is: " + product  + "<br>The result of 5 + 9 + 13 + 17 + 21 + 25 is: " + sum);
-        }
-    function whileStatement() {
-      var productRaw = 1;
-      var sum = 0;
-      var number = 3;
-      //while increasing number by three each iteration until number is less than or equal to 18: add to the sum by the number, and multiply the product by the number as it increments
-      do {
-        sum = sum + number;
-        productRaw = productRaw * number;
-        number+=3;
-        }
-        while (number<=18);
-        product = productRaw.toLocaleString();
-        document.getElementById("textResponseTwo").innerHTML = ("The result of 3 * 6 * 9 * 12 * 15 * 18 is: " + product  + "<br>The result of 3 + 6 + 9 + 12 + 15 + 18 is: " + sum);
-        document.getElementById("textResponseTwoBlur").innerHTML = ("The result of 3 * 6 * 9 * 12 * 15 * 18 is: " + product  + "<br>The result of 3 + 6 + 9 + 12 + 15 + 18 is: " + sum);
-        }
-		//set textResponse field to empty; function activated if reset button is pressed
-     function showFirstAnswer() {
-      document.getElementById("textResponseOne").hidden = false;
-      document.getElementById("textResponseOneBlur").hidden = true;
-      }
-    function blurFirstAnswer() {
-      document.getElementById("textResponseOne").hidden = true;
-      document.getElementById("textResponseOneBlur").hidden = false;
-      }
-    function showSecondAnswer() {
-      document.getElementById("textResponseTwo").hidden = false;
-      document.getElementById("textResponseTwoBlur").hidden = true;
-      }
-    function blurSecondAnswer() {
-      document.getElementById("textResponseTwo").hidden = true;
-      document.getElementById("textResponseTwoBlur").hidden = false;
-      }
+	function forStatement() {
+		var productRaw = 1;
+      		var sum = 0;
+      		//begin with for loop starting at 5, then increasing by four each iteration until number is less than or equal to 25
+      		for(var number = 5; number <= 25; number+=4) {
+        		sum = sum + number;
+        		productRaw = productRaw * number;
+        		product = productRaw.toLocaleString();
+        	}
+        	document.getElementById("textResponseOne").innerHTML = ("The result of 5 * 9 * 13 * 17 * 21 * 25 is: " + product  + "<br>The result of 5 + 9 + 13 + 17 + 21 + 25 is: " + sum);
+        	document.getElementById("textResponseOneBlur").innerHTML = document.getElementById("textResponseOne").innerHTML;
+        	}
+	function whileStatement() {
+      		var productRaw = 1;
+      		var sum = 0;
+      		var number = 3;
+      		//while increasing number by three each iteration until number is less than or equal to 18: add to the sum by the number, and multiply the product by the number as it increments
+      		do {
+        		sum = sum + number;
+        		productRaw = productRaw * number;
+        		number+=3;
+        	}
+        	while (number<=18);
+        	product = productRaw.toLocaleString();
+        	document.getElementById("textResponseTwo").innerHTML = ("The result of 3 * 6 * 9 * 12 * 15 * 18 is: " + product  + "<br>The result of 3 + 6 + 9 + 12 + 15 + 18 is: " + sum);
+        	document.getElementById("textResponseTwoBlur").innerHTML = document.getElementById("textResponseTwo").innerHTML;
+        	} 
+	//show and hide the answers based on button status
+	function showFirstAnswer() {
+      		document.getElementById("textResponseOne").hidden = false;
+      		document.getElementById("textResponseOneBlur").hidden = true;
+      	}
+    	function blurFirstAnswer() {
+      		document.getElementById("textResponseOne").hidden = true;
+      		document.getElementById("textResponseOneBlur").hidden = false;
+      	}
+    	function showSecondAnswer() {
+      		document.getElementById("textResponseTwo").hidden = false;
+      		document.getElementById("textResponseTwoBlur").hidden = true;
+      	}
+    	function blurSecondAnswer() {
+      		document.getElementById("textResponseTwo").hidden = true;
+      		document.getElementById("textResponseTwoBlur").hidden = false;
+      	}
     </script>
     <style>
-		body {
-		  background-color: gray;
-    }
-		a:link {
-  	  color: white;
-		}
-		a:visited {
-  	  color: yellow;
-		}
-		a:hover {
-  	  color: black;
-		}
-		a:active {
-  	  color: red;
-		}
-    label {
-      font-family: calibri;
-      color: white;
-      display: inline-block;
-      width: 150px;
-    }
-		ul {
-      font-family: calibri;
-      display: inline;
-      color: white;
-      }
-    li {
-      background-color: transparent; 
-      border-radius: 2px;
+	body {
+		background-color: gray;
+    	}
+	a:link {
+  		color: white;
+	}
+	a:visited {
+  	  	color: yellow;
+	}
+	a:hover {
+  	  	color: black;
+	}
+	a:active {
+  	  	color: red;
+	}
+    	label {
+      		font-family: calibri;
+      		color: white;
+      		display: inline-block;
+      		width: 150px;
+    	}
+	ul {
+      		font-family: calibri;
+      		display: inline;
+      		color: white;
+      	}
+    	li {
+      		background-color: transparent; 
+      		border-radius: 2px;
   		text-align: left;
   		font-size: 16px;
   		cursor: pointer;
-      }
-    li:hover {
-      background-color: white;
-      color: black;
-      width: fit-content;
-      }
-    h1 {
-      font-family: calibri;
-			color: white;
-    }
-    footer {
-      font-family: calibri;
-      font-size: 80%;
-			color: white;
-    }
-		p {
-    	font-family: calibri;
-			color: white;
-    }
-    .blurry-text {
-   color: transparent;
-   text-shadow: 0 0 5px rgba(255,255,255,1);
+      	}
+    	li:hover {
+      		background-color: white;
+      		color: black;
+      		width: fit-content;
+      	}
+    	h1 {
+      		font-family: calibri;
+		color: white;
+    	}
+    	footer {
+      		font-family: calibri;
+      		font-size: 80%;
+		color: white;
+    	}	
+	p {
+    		font-family: calibri;
+		color: white;
+    	}
+    	.blurry-text {
+   		color: transparent;
+   		text-shadow: 0 0 5px rgba(255,255,255,1);
 	}
-    </style>
-	  </head>
-	  <body onload = "blurFirstAnswer();forStatement();blurSecondAnswer();whileStatement();" >
-		  <header>
-			  <h1>For & Do While Loops</h1>
-		  </header>
-      <p>What is the product of every fourth number between 5 and 25 inclusive?<br>What is the sum of every fourth number between 5 and 25 inclusive?</p>
-  		<input type="button" onclick="showFirstAnswer()" value="SHOW ANSWER">
-		  <input type="button" onclick="blurFirstAnswer()" value="HIDE ANSWER"><br>
+	</style>
+	</head>
+	<body onload = "blurFirstAnswer();forStatement();blurSecondAnswer();whileStatement();" >
+	<header>
+		<h1>For & Do While Loops</h1>
+	</header>
+      	<p>What is the product of every fourth number between 5 and 25 inclusive?<br>What is the sum of every fourth number between 5 and 25 inclusive?</p>
+  	<input type="button" onclick="showFirstAnswer()" value="SHOW ANSWER">
+	<input type="button" onclick="blurFirstAnswer()" value="HIDE ANSWER"><br>
     	<p id="textResponseOne"></p>
         <p id="textResponseOneBlur" class="blurry-text"></p><br>
-      <p>What is the product of every third number between 3 and 18 inclusive?<br>What is the sum of every third number between 3 and 18 inclusive?</p>
-      <input type="button" onclick="showSecondAnswer()" value="SHOW ANSWER">
-		  <input type="button" onclick="blurSecondAnswer()" value="HIDE ANSWER"><br>
+      	<p>What is the product of every third number between 3 and 18 inclusive?<br>What is the sum of every third number between 3 and 18 inclusive?</p>
+      	<input type="button" onclick="showSecondAnswer()" value="SHOW ANSWER">
+	<input type="button" onclick="blurSecondAnswer()" value="HIDE ANSWER"><br>
     	<p id="textResponseTwo"></p>
         <p id="textResponseTwoBlur" class="blurry-text"></p><br>
-	    <footer>
+	<footer>
         <ul>
-          <li><a href="hw4part2.html">Loops - Part 2</a></li>
-			    <li><a href="hw4extracredit.html">Loops - Extra Credit</a></li>
-  		  	<li><a href="hw4.html">Return to Loops Main Page</a></li>
-		  </ul>
-	  </footer>
+        	<li><a href="hw4part2.html">Loops - Part 2</a></li>
+		<li><a href="hw4extracredit.html">Loops - Extra Credit</a></li>
+  		<li><a href="hw4.html">Return to Loops Main Page</a></li>
+	</ul>
+	</footer>
 	</body>
 </html>
