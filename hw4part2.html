@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+	<html lang="en">
+	<head>
+		<title>Looping Statements - Part 2</title>
+		<meta charset="utf-8">
+		<meta name="description" content="JavaScript assignments at CSM, JavaScript nested loops">
+    <script>
+		const rows = 5;
+        const columns = 3;
+        const principal = 1000;
+        function fivePercentTable() {
+        	const fivePercent = 0.05;
+            var table = document.createElement("table");
+            var columnHeader = document.createElement("tr");
+            //create column headers
+            for (var i = 1; i <= columns; i++) {
+                var th = document.createElement("th");
+                if(i == 1) {
+                  th.textContent = "Year";
+                }
+                else if(i == 2) {
+                  th.textContent = "Amount on deposit";
+                }
+                else {
+                  th.textContent = "Interest Rate";
+                }
+                columnHeader.appendChild(th);
+            }
+            table.appendChild(columnHeader);
+            //create rows below column headers
+            for (var i = 1; i <= rows; i++) {
+                var row = document.createElement("tr");
+                for (var j = 1; j <= columns; j++) {
+                    var td = document.createElement("td")
+                    if(j == 1) {
+                      td.textContent = i;
+                    }
+                    else if(j == columns) {
+                      td.textContent = fivePercent;
+                    }
+                    else {
+                      var percentRate = 1 + fivePercent;
+                      var calculation = Math.pow(percentRate, i);
+                      td.textContent = (principal * calculation).toFixed(2);
+                    }
+                    row.appendChild(td);
+                }
+                table.appendChild(row);
+            }
+            document.getElementById("fivePercentTable").appendChild(table);
+        }
+        function sixPercentTable() {
+        	const sixPercent = 0.06;
+            var table = document.createElement("table");
+            var columnHeader = document.createElement("tr");
+            //create column headers
+            for (var i = 1; i <= columns; i++) {
+                var th = document.createElement("th");
+                if(i == 1) {
+                  th.textContent = "Year";
+                }
+                else if(i == 2) {
+                  th.textContent = "Amount on deposit";
+                }
+                else {
+                  th.textContent = "Interest Rate";
+                }
+                columnHeader.appendChild(th);
+            }
+            table.appendChild(columnHeader);
+            //create rows below column headers
+            for (var i = 1; i <= rows; i++) {
+                var row = document.createElement("tr");
+                for (var j = 1; j <= columns; j++) {
+                    var td = document.createElement("td")
+                    if(j == 1) {
+                      td.textContent = i;
+                    }
+                    else if(j == columns) {
+                      td.textContent = sixPercent;
+                    }
+                    else {
+                      var percentRate = 1 + sixPercent;
+                      var calculation = Math.pow(percentRate, i);
+                      td.textContent = (principal * calculation).toFixed(2);
+                    }
+                    row.appendChild(td);
+                }
+                table.appendChild(row);
+            }
+            document.getElementById("sixPercentTable").appendChild(table);
+        }
+        function sevenPercentTable() {
+        	const sevenPercent = 0.07;
+            var table = document.createElement("table");
+            var columnHeader = document.createElement("tr");
+            //create column headers
+            for (var i = 1; i <= columns; i++) {
+                var th = document.createElement("th");
+                if(i == 1) {
+                  th.textContent = "Year";
+                }
+                else if(i == 2) {
+                  th.textContent = "Amount on deposit";
+                }
+                else {
+                  th.textContent = "Interest Rate";
+                }
+                columnHeader.appendChild(th);
+            }
+            table.appendChild(columnHeader);
+            //create rows below column headers
+            for (var i = 1; i <= rows; i++) {
+                var row = document.createElement("tr");
+                for (var j = 1; j <= columns; j++) {
+                    var td = document.createElement("td")
+                    if(j == 1) {
+                      td.textContent = i;
+                    }
+                    else if(j == columns) {
+                      td.textContent = sevenPercent;
+                    }
+                    else {
+                      var percentRate = 1 + sevenPercent;
+                      var calculation = Math.pow(percentRate, i);
+                      td.textContent = (principal * calculation).toFixed(2);
+                    }
+                    row.appendChild(td);
+                }
+                table.appendChild(row);
+            }
+            document.getElementById("sevenPercentTable").appendChild(table);
+        }
+        createTable();
+    </script>
+    <style>
+	    body {
+		        background-color: gray;
+    	}
+	    a:link {
+  		      color: white;
+	    }
+	    a:visited {
+  	  	    color: yellow;
+	    }  
+	    a:hover {
+  	  	    color: black;
+	    }
+	    a:active {
+  	  	    color: red;
+	    }
+	    ul {
+      		  font-family: calibri;
+      		  display: inline;
+      		  color: white;
+      }
+    	li {
+      		  background-color: transparent; 
+      		  border-radius: 2px;
+  		      text-align: left;
+  		      font-size: 16px;
+  		      cursor: pointer;
+      }
+    	li:hover {
+      		  background-color: white;
+      		  color: black;
+      		  width: fit-content;
+      }
+    	h1 {
+      		  font-family: calibri;
+		        color: white;
+    	}
+    	footer {
+      		  font-family: calibri;
+      		  font-size: 80%;
+		        color: white;
+    	}	
+    	table {
+            border-collapse: collapse;
+            width: 50%;
+            margin: 10px;
+            width: fit-content;
+      }
+      th, td {
+            border: 1px solid black;
+            padding: 2px;
+            text-align: left;
+            color: white;
+            font-family: calibri;
+            font-size: 18px;
+      }
+      th {
+            background-color: #000000;
+      }
+      tr:nth-child(odd) {
+            background-color: #008080;
+      }
+      tr:nth-child(even) {
+            background-color: #E0115F;
+      }
+	</style>
+	</head>
+	<body onload = "fivePercentTable(); sixPercentTable(); sevenPercentTable();" >
+	<header>
+		<h1>Learn about compund interest</h1>
+	</header>
+  <div id="fivePercentTable"></div><br>
+  <div id="sixPercentTable"></div><br>
+  <div id="sevenPercentTable"></div>
+	<footer>
+        <ul>
+        	<li><a href="hw4part1.html">Loops - Part 1</a></li>
+			    <li><a href="hw4extracredit.html">Loops - Extra Credit</a></li>
+  			  <li><a href="hw4.html">Return to Loops Main Page</a></li>
+	</ul>
+	</footer>
+	</body>
+</html>
