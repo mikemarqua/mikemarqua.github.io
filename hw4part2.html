@@ -41,7 +41,8 @@
                     else {
                       var percentRate = 1 + fivePercent;
                       var calculation = Math.pow(percentRate, i);
-                      td.textContent = "$" + (principal * calculation).toFixed(2);
+                      var currencyConvert = {style: "currency", currency: "USD"};
+                      td.textContent = (principal * calculation).toLocaleString("en", currencyConvert);
                     }
                     row.appendChild(td);
                 }
@@ -82,7 +83,8 @@
                     else {
                       var percentRate = 1 + sixPercent;
                       var calculation = Math.pow(percentRate, i);
-                      td.textContent = "$" + (principal * calculation).toFixed(2);
+                      var currencyConvert = {style: "currency", currency: "USD"};
+                      td.textContent = (principal * calculation).toLocaleString("en", currencyConvert);
                     }
                     row.appendChild(td);
                 }
@@ -123,7 +125,8 @@
                     else {
                       var percentRate = 1 + sevenPercent;
                       var calculation = Math.pow(percentRate, i);
-                      td.textContent = "$" + (principal * calculation).toFixed(2);
+                      var currencyConvert = {style: "currency", currency: "USD"};
+                      td.textContent = (principal * calculation).toLocaleString("en", currencyConvert);
                     }
                     row.appendChild(td);
                 }
