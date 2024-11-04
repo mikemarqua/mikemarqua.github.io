@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+	<html lang="en">
+	<head>
+		<title>Arrays - Part 1</title>
+		<meta charset="utf-8">
+		<meta name="description" content="JavaScript assignments at CSM, JavaScript with Arrays">
+    <script>    
+	  function validations() {
+    var entryInvalid;
+    //validate user name entry
+    var userName = document.forms["arrayForm"].elements["userName"].value;
+    if(userName == "") {
+    	entryInvalid = true;
+        }
+    //validate age group selection
+    var ageGroup = document.getElementsByName("ageGroup");
+    if((ageGroup[0].checked == false) && (ageGroup[1].checked == false) && (ageGroup[2].checked == false))  {
+    	entryInvalid = true;
+        }
+    //validate web browser selection
+    var webBrowser = document.getElementsByName("browsers");
+    if((webBrowser[0].checked == false) && (webBrowser[1].checked == false) && (webBrowser[2].checked == false) && (webBrowser[3].checked == false))  {
+    	entryInvalid = true;
+        }
+    //validate movie genre selection
+    var movieGenre = document.getElementById("genrePreference").value;
+    if(movieGenre == '') {
+    	entryInvalid = true;
+        }
+    //output proper text response
+    if(entryInvalid == true) {
+    	document.getElementById("textResponse").innerHTML = "One or more of the items is missing a selection.<br>Please ensure a selection is made for each item and re-submit."; 
+    }
+    else {
+    	document.getElementById("textResponse").innerHTML = "Your data has been submitted. Thank you!";
+    }
+    }
+	function clearInputField() {
+            		document.getElementById("textResponse").innerHTML = '';
+        	}
+    </script>
+    <style>
+	body {
+		background-color: gray;
+    	}
+	a:link {
+  		color: white;
+	}
+	a:visited {
+  	  	color: yellow;
+	}
+	a:hover {
+  	  	color: black;
+	}
+	a:active {
+  	  	color: red;
+	}
+  label {
+        font-family: calibri;
+      	color: white;
+      	display: inline-block;
+      	width: 150px;
+  }
+	ul {
+      	font-family: calibri;
+      	display: inline;
+      	color: white;
+  }
+  li {
+      	background-color: transparent; 
+      	border-radius: 2px;
+  		  text-align: left;
+  		  font-size: 16px;
+  		  cursor: pointer;
+  }
+  li:hover {
+      	background-color: white;
+      	color: black;
+      	width: fit-content;
+  }
+  h1 {
+      	font-family: calibri;
+		  color: white;
+  }
+    	footer {
+      		font-family: calibri;
+      		font-size: 80%;
+		color: white;
+    	}	
+	p {
+    		font-family: calibri;
+		color: white;
+    	}
+	</style>
+	</head>
+	<body>
+	<header>
+		<h1>Arrays - Part 1</h1>
+	</header>
+      <p>Please fill out the below information</p>
+      <form name="arrayForm">
+  		<label for="userName">Full name:</label><br>
+  		<input type="text" id="userName" name="userName"><br>
+  		<p>Age group:<br>
+  		<input type="radio" id="lessThan21" name="ageGroup">
+  		<label for="lessThan21">Less than 21</label><br>
+      <input type="radio" id="between21And50" name="ageGroup">
+  		<label for="between21And50">Between 21 and 50</label><br>
+      <input type="radio" id="olderThan50" name="ageGroup">
+  		<label for="olderThan50">Older than 50</label><br></p>
+      <p>Web browsers used:<br>
+      <input type="checkbox" id="firefox" name="browsers">
+  		<label for="firefox">Firefox</label><br>
+      <input type="checkbox" id="edge" name="browsers">
+  		<label for="edge">Edge</label><br>
+      <input type="checkbox" id="chrome" name="browsers">
+  		<label for="chrome">Chrome</label><br>
+      <input type="checkbox" id="safari" name="browsers">
+  		<label for="safari">Safari</label><br></p>
+      <label for="genrePreference">Preferred movie genre:</label><br>
+    	<input list="genreList" name="genrePreference" id="genrePreference">
+      <datalist id="genreList">
+      <option value="Action"></option>
+      <option value="Comedy"></option>
+      <option value="Drama"></option>
+      <option value="Documentary"></option>
+      <option value="Science Fiction"></option>
+      </datalist><br><br><br>
+  		<input type="button" onclick="validations()" value="SUBMIT">
+		  <input type="reset" onclick="clearInputField()" value="RESET"><br>
+    	<p id="textResponse"></p>
+	</form>
+	<footer>
+        <ul>
+        	<li><a href="hw5part2.html">Arrays - Part 2</a></li>
+            <li><a href="hw5part3.html">Arrays - Part 3</a></li>
+  		<li><a href="hw5.html">Return to Arrays Main Page</a></li>
+	</ul>
+	</footer>
+	</body>
+</html>
