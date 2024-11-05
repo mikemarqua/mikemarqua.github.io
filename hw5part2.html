@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+	<html lang="en">
+	<head>
+		<title>Arrays - Part 2</title>
+		<meta charset="utf-8">
+		<meta name="description" content="JavaScript assignments at CSM, JavaScript with Form pulldowns">
+    <script> 
+    function accessWebsiteChange() {
+    var website = document.getElementById("onChangeList").value;
+    window.open(website);
+    }
+    function accessWebsiteClick() {
+    var website = document.getElementById("onClickList").value;
+    window.open(website);
+    }
+    </script>
+    <style>
+	body {
+		background-color: gray;
+    	}
+	a:link {
+  		color: white;
+	}
+	a:visited {
+  	  	color: yellow;
+	}
+	a:hover {
+  	  	color: black;
+	}
+	a:active {
+  	  	color: red;
+	}
+  label {
+        font-family: calibri;
+      	color: white;
+      	display: inline-block;
+      	width: 150px;
+  }
+	ul {
+      	font-family: calibri;
+      	display: inline;
+      	color: white;
+  }
+  li {
+      	background-color: transparent; 
+      	border-radius: 2px;
+  		  text-align: left;
+  		  font-size: 16px;
+  		  cursor: pointer;
+  }
+  li:hover {
+      	background-color: white;
+      	color: black;
+      	width: fit-content;
+  }
+  h1 {
+      	font-family: calibri;
+		  color: white;
+  }
+    	footer {
+      		font-family: calibri;
+      		font-size: 80%;
+		color: white;
+    	}	
+	p {
+    		font-family: calibri;
+		color: white;
+    	}
+	</style>
+	</head>
+	<body>
+	<header>
+		<h1>Arrays - Part 2</h1>
+	</header>
+    <form>
+      <p>The below pulldown will take you to the selected website on selection</p>
+      <select name="onChangeList" id="onChangeList" onChange="accessWebsiteChange()">
+      <option>Select One:</option>
+      	<option value="https://collegeofsanmateo.edu/">CSM</option>
+        <option value="https://validator.w3.org/">W3 Validator</option>
+        <option value="https://www.w3schools.com/">W3 Schools</option>
+        <option value="https://github.com/">GitHub</option>
+        </select>
+        </form><br><br><br><br><br>
+        <form>
+       <p>The below pulldown will require you to press "Go" to open the selected website</p>
+       <select name="onClickList" id="onClickList">
+      	<option value="https://collegeofsanmateo.edu/">CSM</option>
+        <option value="https://validator.w3.org/">W3 Validator</option>
+        <option value="https://www.w3schools.com/">W3 Schools</option>
+        <option value="https://github.com/">GitHub</option>
+        </select>
+        <input type="button" onclick="accessWebsiteClick()" value="Go">
+        </form><br><br><br><br><br>
+	<footer>
+        <ul>
+        	<li><a href="hw5part1.html">Arrays - Part 1</a></li>
+            <li><a href="hw5part3.html">Arrays - Part 3</a></li>
+  		<li><a href="hw5.html">Return to Arrays Main Page</a></li>
+	</ul>
+	</footer>
+	</body>
+</html>
