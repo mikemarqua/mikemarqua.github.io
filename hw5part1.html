@@ -4,8 +4,25 @@
 		<title>Arrays - Part 1</title>
 		<meta charset="utf-8">
 		<meta name="description" content="JavaScript assignments at CSM, JavaScript with Arrays">
-    <script>    
-	  function validations() {
+    <script>   
+    function arrayPopulate() {
+    var ageArray = ["Less than 21", "Between 21 and 50", "Older than 50"];
+    var ageForm = document.getElementById("ageForm");
+    for(var i = 0; i < ageArray.length; ++i) {
+    	ageForm.innerHTML +=`<input type="radio" name="ageGroup" id="${ageArray[i]}"<br><label>${ageArray[i]}</label><br>`
+        }
+    var browserArray = ["Firefox", "Edge", "Chrome", "Safari"];
+    var browserForm = document.getElementById("browserForm");
+    for(var i = 0; i < browserArray.length; ++i) {
+    	browserForm.innerHTML +=`<input type="checkbox" name="browsers" id="${browserArray[i]}"<br><label>${browserArray[i]}</label><br>`
+        }
+    var genreArray = ["Action", "Comedy", "Drama", "Documentary", "Science Fiction"];
+    var genreForm = document.getElementById("genreList");
+    for(var i = 0; i < genreArray.length; ++i) {
+    	genreForm.innerHTML +=`<option value="${genreArray[i]}"</option><br>`
+        }
+        }
+	function validations() {
     var entryInvalid;
     //validate user name entry
     var userName = document.forms["arrayForm"].elements["userName"].value;
@@ -93,43 +110,32 @@
     	}
 	</style>
 	</head>
-	<body>
+	<body onload="arrayPopulate()">
 	<header>
 		<h1>Arrays - Part 1</h1>
 	</header>
       <p>Please fill out the below information</p>
       <form name="arrayForm">
+      	<div data-name="nameForm">
   		<label for="userName">Full name:</label><br>
-  		<input type="text" id="userName" name="userName"><br>
-  		<p>Age group:<br>
-  		<input type="radio" id="lessThan21" name="ageGroup">
-  		<label for="lessThan21">Less than 21</label><br>
-      <input type="radio" id="between21And50" name="ageGroup">
-  		<label for="between21And50">Between 21 and 50</label><br>
-      <input type="radio" id="olderThan50" name="ageGroup">
-  		<label for="olderThan50">Older than 50</label><br></p>
-      <p>Web browsers used:<br>
-      <input type="checkbox" id="firefox" name="browsers">
-  		<label for="firefox">Firefox</label><br>
-      <input type="checkbox" id="edge" name="browsers">
-  		<label for="edge">Edge</label><br>
-      <input type="checkbox" id="chrome" name="browsers">
-  		<label for="chrome">Chrome</label><br>
-      <input type="checkbox" id="safari" name="browsers">
-  		<label for="safari">Safari</label><br></p>
+  		<input type="text" id="userName" name="userName"><br><br>
+       </div>
+       <label>Age Group:</label>
+       <div data-name="ageForm" id="ageForm">
+        </div><br>
+      <label>Web browsers used:</label>
+      <div data-name="browserForm" id="browserForm">
+        </div><br>
+        <div>
       <label for="genrePreference">Preferred movie genre:</label><br>
     	<input list="genreList" name="genrePreference" id="genrePreference">
       <datalist id="genreList">
-      <option value="Action"></option>
-      <option value="Comedy"></option>
-      <option value="Drama"></option>
-      <option value="Documentary"></option>
-      <option value="Science Fiction"></option>
       </datalist><br><br><br>
+      </div>
   		<input type="button" onclick="validations()" value="SUBMIT">
 		  <input type="reset" onclick="clearInputField()" value="RESET"><br>
     	<p id="textResponse"></p>
-	</form>
+                     </form>
 	<footer>
         <ul>
         	<li><a href="hw5part2.html">Arrays - Part 2</a></li>
