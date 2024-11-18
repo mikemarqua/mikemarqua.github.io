@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+	<html lang="en">
+	<head>
+		<title>Objects - Part 3</title>
+		<meta charset="utf-8">
+		<meta name="description" content="JavaScript assignments at CSM, JavaScript with Regular expressions (Regex)">
+    <script>
+    function validation() {
+    	var userPhoneNumber = document.getElementById("phoneNumber").value;
+        var phoneNumberRegex = /\(\d{3}\) \d{3}-\d{4}/;
+        if(phoneNumberRegex.test(userPhoneNumber)) {
+        	document.getElementById("textResponse").innerHTML = "Thank you for providing your phone number.\nOne of our service agents will contact you as soon as possible.";
+            }
+        else {
+        	document.getElementById("textResponse").innerHTML = userPhoneNumber + " is not a valid format.<br>Please type the phone number as (xxx) xxx-xxxx<br>Each 'x' should be a number only.";
+            }
+        }
+    function clearInputField() {
+    	document.getElementById("textResponse").innerHTML = '';
+        }
+    </script>
+    <style>
+	body {
+		background-color: gray;
+    	}
+	a:link {
+  		color: white;
+	}
+	a:visited {
+  	  	color: yellow;
+	}
+	a:hover {
+  	  	color: black;
+	}
+	a:active {
+  	  	color: red;
+	}
+  label {
+        font-family: calibri;
+      	color: white;
+      	display: inline-block;
+      	width: 150px;
+  }
+	ul {
+      	font-family: calibri;
+      	display: inline;
+      	color: white;
+  }
+  li {
+      	background-color: transparent; 
+      	border-radius: 2px;
+  		  text-align: left;
+  		  font-size: 16px;
+  		  cursor: pointer;
+  }
+  li:hover {
+      	background-color: white;
+      	color: black;
+      	width: fit-content;
+  }
+  h1 {
+      	font-family: calibri;
+		  color: white;
+  }
+    	footer {
+      		font-family: calibri;
+      		font-size: 80%;
+		color: white;
+    	}	
+	p {
+    		font-family: calibri;
+		color: white;
+    	}
+	</style>
+	</head>
+	<body>
+	<header>
+		<h1>Service Callback Request</h1>
+	</header>
+    <form name="phoneNumberEntry">
+    <p>Please enter your phone number and one of our support agents will contact you as soon as possible.<br>
+  		<input type="tel" id="phoneNumber" name="phoneNumber"><br><br>
+        <input type="button" onclick="validation()" value="SUBMIT">
+		  <input type="reset" onclick="clearInputField()" value="RESET"><br>
+    	<p id="textResponse"></p>
+        </form>
+	<footer>
+        <ul>
+        	<li><a href="hw6part1.html">Objects - Part 1</a></li>
+            <li><a href="hw6part2.html">Objects - Part 2</a></li>
+  		<li><a href="hw6.html">Return to Objects Main Page</a></li>
+	</ul>
+	</footer>
+	</body>
+</html>
