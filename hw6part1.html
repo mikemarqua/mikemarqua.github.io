@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+	<html lang="en">
+	<head>
+		<title>Objects - Part 1</title>
+		<meta charset="utf-8">
+		<meta name="description" content="JavaScript assignments at CSM, JavaScript with Math and Objects">
+    <script>
+    function validation() {
+    	var userEntry = document.getElementById("userNumber").value;
+        var userString = userEntry.toString();
+        var period = userString.indexOf('.');
+        var stringLength = userString.length;
+        var decimals = stringLength - period - 1;
+        if(decimals <= 3) {
+        	document.getElementById("textResponse").innerHTML = "The letter needs at least four decimals.<br>Please try again.";
+            }
+        else {
+        	var userNumber = parseFloat(userEntry);
+            var number = {}
+            number.nearestInt = Math.round(userNumber);
+			number.squareRootInt = Math.sqrt(userNumber);
+            number.tenthPosition = Math.floor(userNumber * 10 + .5 ) / 10;
+        	number.hundrethPosition = Math.floor(userNumber * 100 + .5 ) / 100;
+        	number.thousandthPosition = Math.floor(userNumber * 1000 + .5 ) / 1000;
+            document.getElementById("textResponse").innerHTML = "You typed number " + userNumber + "<br>Rounded to the nearest integer = " + number.nearestInt.toFixed() + "<br>Square root rounded to integer = " + number.squareRootInt.toFixed() + "<br>Rounded to the nearest 10th position = " + number.tenthPosition.toFixed(1) + "<br>Rounded to the nearest 100th position = " + number.hundrethPosition.toFixed(2) + "<br>Rounded to the nearest 1000th position = " + number.thousandthPosition.toFixed(3);
+            }
+        }
+    function clearInputField() {
+    	document.getElementById("textResponse").innerHTML = '';
+        }
+    </script>
+    <style>
+	body {
+		background-color: gray;
+    	}
+	a:link {
+  		color: white;
+	}
+	a:visited {
+  	  	color: yellow;
+	}
+	a:hover {
+  	  	color: black;
+	}
+	a:active {
+  	  	color: red;
+	}
+  label {
+        font-family: calibri;
+      	color: white;
+      	display: inline-block;
+      	width: 150px;
+  }
+	ul {
+      	font-family: calibri;
+      	display: inline;
+      	color: white;
+  }
+  li {
+      	background-color: transparent; 
+      	border-radius: 2px;
+  		  text-align: left;
+  		  font-size: 16px;
+  		  cursor: pointer;
+  }
+  li:hover {
+      	background-color: white;
+      	color: black;
+      	width: fit-content;
+  }
+  h1 {
+      	font-family: calibri;
+		  color: white;
+  }
+    	footer {
+      		font-family: calibri;
+      		font-size: 80%;
+		color: white;
+    	}	
+	p {
+    		font-family: calibri;
+		color: white;
+    	}
+	</style>
+	</head>
+	<body>
+	<header>
+		<h1>Decimal Position Validation</h1>
+	</header>
+    <form name="decimalPositions">
+    <p>Please enter a number with at least four decimals (<i>ex: 1.2345</i>)<br>
+  		<input type="number" id="userNumber" name="userNumber" step="any" title="Enter a number with at least four decimals"><br><br>
+        <input type="button" onclick="validation()" value="SUBMIT">
+		  <input type="reset" onclick="clearInputField()" value="RESET"><br>
+    	<p id="textResponse"></p>
+        </form>
+	<footer>
+        <ul>
+        	<li><a href="hw6part2.html">Objects - Part 2</a></li>
+            <li><a href="hw6part3.html">Objects - Part 3</a></li>
+  		<li><a href="hw6.html">Return to Objects Main Page</a></li>
+	</ul>
+	</footer>
+	</body>
+</html>
