@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+	<html lang="en">
+	<head>
+		<title>Objects - Part 2</title>
+		<meta charset="utf-8">
+		<meta name="description" content="JavaScript assignments at CSM, JavaScript with Window.open() method">
+    <script>
+    function validation() {
+    var stringRaw = document.getElementById("userString").value;
+	var string = stringRaw.toLowerCase();
+    var characterRaw = document.getElementById("userChar").value;
+    var character = characterRaw.toLowerCase();
+   	var charCount = 0;
+    for(var i = 0; i < string.length; i++) {
+    	var currentChar = string.charAt(i);
+        if(currentChar == character) {
+        	charCount += 1;
+            }
+        }
+        if(charCount == 1) {
+        	document.getElementById("textResponse").innerHTML = "The letter '" + character + "' is present 1 time";
+            }
+        else if(charCount >= 2) {
+        	document.getElementById("textResponse").innerHTML = "The letter '" + character + "' is present " + charCount + " times";
+            }
+        else {
+        	var windowHTML = "<html>\n";
+			windowHTML += "<head>\n";
+			windowHTML += "<title>No Input Found Window</title>\n";
+			windowHTML += "</head>\n";
+			windowHTML += "<body>\n";
+			windowHTML += "<div style='margin:0 auto;'>\n";
+			windowHTML += "<p>Search character '" + character + "' not found in the content you typed</p>\n";
+			windowHTML += "<input type='button' value='Close This Window' onclick='window.close()'>\n";
+			windowHTML += "</div>\n";
+			windowHTML += "</body>\n";
+			windowHTML += "</html>";
+        	document.getElementById("textResponse").innerHTML = '';
+            var popupWindow = window.open("", "popupWindow",
+			"top=100,left=40,width=300,height=100");
+            popupWindow.focus();
+            popupWindow.document.write(windowHTML);
+            popupWindow.document.close();
+            }
+    }
+    function clearInputField() {
+    	document.getElementById("textResponse").innerHTML = '';
+        }
+    </script>
+    <style>
+	body {
+		background-color: gray;
+    	}
+	a:link {
+  		color: white;
+	}
+	a:visited {
+  	  	color: yellow;
+	}
+	a:hover {
+  	  	color: black;
+	}
+	a:active {
+  	  	color: red;
+	}
+  label {
+        font-family: calibri;
+      	color: white;
+      	display: inline-block;
+      	width: 500px;
+  }
+	ul {
+      	font-family: calibri;
+      	display: inline;
+      	color: white;
+  }
+  li {
+      	background-color: transparent; 
+      	border-radius: 2px;
+  		  text-align: left;
+  		  font-size: 16px;
+  		  cursor: pointer;
+  }t
+  li:hover {
+      	background-color: white;
+      	color: black;
+      	width: fit-content;
+  }
+  h1 {
+      	font-family: calibri;
+		  color: white;
+  }
+    	footer {
+      		font-family: calibri;
+      		font-size: 80%;
+		color: white;
+    	}	
+	p {
+    		font-family: calibri;
+		color: white;
+    	}
+	textarea {
+    	font-family: calibri;
+        font-size: 100%;
+        }
+	</style>
+	</head>
+	<body>
+	<header>
+		<h1>Letter Frequency Calculator</h1>
+	</header>
+    <form name="letterCalculator">
+    <label for="userString">Enter whatever you would like in the text field below:</label><br>
+    	<textarea id="userString" name="userString" rows="4" cols="47"> </textarea><br><br>
+        <label for="userChar">Enter one letter below:</label><br>
+  		<input type="text" id="userChar" name="userChar" maxlength="1"><br><br>
+        <input type="button" onclick="validation()" value="SUBMIT">
+		  <input type="reset" onclick="clearInputField()" value="RESET"><br>
+    	<p id="textResponse"></p>
+        </form>
+	<footer>
+        <ul>
+        	<li><a href="hw6part1.html">Objects - Part 1</a></li>
+            <li><a href="hw6part3.html">Objects - Part 3</a></li>
+  		<li><a href="hw6.html">Return to Objects Main Page</a></li>
+	</ul>
+	</footer>
+	</body>
+</html>
