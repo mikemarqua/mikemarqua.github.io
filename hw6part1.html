@@ -12,7 +12,7 @@
         var stringLength = userString.length;
         var decimals = stringLength - period - 1;
         if(decimals <= 3) {
-        	document.getElementById("textResponse").innerHTML = "The letter needs at least four decimals.<br>Please try again.";
+        	document.getElementById("textResponse").innerHTML = "The number needs at least four decimals.<br>Please try again.";
             }
         else {
         	var userNumber = parseFloat(userEntry);
@@ -88,7 +88,7 @@
 		<h1>Decimal Position Validation</h1>
 	</header>
     <form name="decimalPositions">
-    <p>Please enter a number with at least four decimals (<i>ex: 1.2345</i>)<br>
+    <label>Please enter a number with at least four decimals (<i>ex: 1.2345</i>)</label><br>
   		<input type="number" id="userNumber" name="userNumber" step="any" title="Enter a number with at least four decimals"><br><br>
         <input type="button" onclick="validation()" value="SUBMIT">
 		  <input type="reset" onclick="clearInputField()" value="RESET"><br>
