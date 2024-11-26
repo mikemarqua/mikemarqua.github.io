@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+	<html lang="en">
+	<head>
+		<title>Object Model</title>
+		<meta charset="utf-8">
+		<meta name="description" content="JavaScript assignments at CSM, JavaScript with Object Models">
+    <script>
+    function arrayPopulate() {
+    var colorArray = ["Red", "Blue", "Green"];
+    var colorForm = document.getElementById("colorForm");
+    for(var i = 0; i < colorArray.length; ++i) {
+    	colorForm.innerHTML +=`<input type="radio" name="colorGroup" onclick="colorCheck()"id="${colorArray[i]}"<br><label>${colorArray[i]}</label><br>`
+        }
+    var styleArray = ["<u>Underline</u>", "<b>Bold</b>", "<i>Italic</i>"];
+    var styleForm = document.getElementById("styleForm");
+    for(var i = 0; i < styleArray.length; ++i) {
+    	styleForm.innerHTML +=`<input type="checkbox" name="styleGroup" onclick="styleCheck(),styleClear()"id="${styleArray[i]}"<br><label>${styleArray[i]}</label><br>`
+        }
+    var fontSizeArray = ["100%", "80%", "60%"];
+    var fontSizeForm = document.getElementById("fontSizeForm");
+    for(var i = 0; i < fontSizeArray.length; ++i) {
+    	fontSizeForm.innerHTML +=`<option value="${fontSizeArray[i]}"</option><br>`
+        }
+         }
+    function colorCheck() {
+    var colorGroup = document.getElementsByName("colorGroup");
+    if(colorGroup[0].checked == true) {
+        document.body.style.backgroundColor = "red";
+        }
+   else if(colorGroup[1].checked == true) {
+        document.body.style.backgroundColor = "blue";
+        }
+   else if(colorGroup[2].checked == true) {
+        document.body.style.backgroundColor = "green";
+        }
+        }
+   function styleCheck() {
+   var styleGroup = document.getElementsByName("styleGroup");
+    if(styleGroup[0].checked == true) {
+        document.getElementById("textResponse").style.textDecoration ="underline";
+        }
+   if(styleGroup[1].checked == true) {
+        document.getElementById("textResponse").style.fontWeight = "bold";
+        }
+  	if(styleGroup[2].checked == true) {
+        document.getElementById("textResponse").style.fontStyle = "italic";
+        }
+        }
+    function styleClear() {
+   var styleGroup = document.getElementsByName("styleGroup");
+    if(styleGroup[0].checked == false) {
+        document.getElementById("textResponse").style.textDecoration ="";
+        }
+   if(styleGroup[1].checked == false) {
+        document.getElementById("textResponse").style.fontWeight = "";
+        }
+  	if(styleGroup[2].checked == false) {
+        document.getElementById("textResponse").style.fontStyle = "";
+        }
+        }
+   function fontSizeCheck() {
+   var fontSize = document.getElementById("fontSizeOptions").value;
+   if(fontSize == "100%") {
+   	document.getElementById("textResponse").style.fontSize = "100%";
+    }
+    else if(fontSize == "80%") {
+   	document.getElementById("textResponse").style.fontSize = "80%";
+    }
+    else if(fontSize == "60%") {
+   	document.getElementById("textResponse").style.fontSize = "60%";
+    }
+    }
+    </script>
+    <style>
+	body {
+		background-color: gray;
+    	}
+	a:link {
+  		color: white;
+	}
+	a:visited {
+  	  	color: yellow;
+	}
+	a:hover {
+  	  	color: black;
+	}
+	a:active {
+  	  	color: red;
+	}
+  label {
+        font-family: calibri;
+      	color: white;
+      	display: inline-block;
+      	width: 325px;
+  }
+	ul {
+      	font-family: calibri;
+      	display: inline;
+      	color: white;
+  }
+  li {
+      	background-color: transparent; 
+      	border-radius: 2px;
+  		  text-align: left;
+  		  font-size: 16px;
+  		  cursor: pointer;
+  }
+  li:hover {
+      	background-color: white;
+      	color: black;
+      	width: fit-content;
+  }
+  h1 {
+      	font-family: calibri;
+		  color: white;
+  }
+    	footer {
+      		font-family: calibri;
+      		font-size: 80%;
+		color: white;
+    	}	
+	p {
+    		font-family: calibri;
+		color: white;
+    	}
+   	div {
+    		font-family: calibri;
+		color: white;
+    	}
+	</style>
+	</head>
+	<body onload="arrayPopulate()">
+	<header>
+		<h1>Object Model</h1>
+	</header>
+    <form name="useForm">
+      	<label>Select a background color:</label>
+       <div data-name="colorForm" id="colorForm">
+        </div><br>
+      <label>Select any styles:</label>
+      <div data-name="styleForm" id="styleForm">
+        </div><br>
+        <div>
+      <label for="fontSizeOptions">Select a font size:</label><br>
+    	<input list="fontSizeForm" name="fontSizeOptions" id="fontSizeOptions">
+      <datalist id="fontSizeForm">
+      </datalist><br><br><br>
+      </div>
+        </form>
+            	<p id="textResponse">Here is the location where you will see your adjustments made.</p>
+	<footer>
+        <ul>
+        	<li><a href="hw7part2.html">Object Model & Cookies - Part 2</a></li>
+  		<li><a href="hw7.html">Return to Object Model & Cookies Main Page</a></li>
+	</ul>
+	</footer>
+	</body>
+</html>
