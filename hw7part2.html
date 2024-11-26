@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+	<html lang="en">
+	<head>
+		<title>Cookies</title>
+		<meta charset="utf-8">
+		<meta name="description" content="JavaScript assignments at CSM, JavaScript with Cookies">
+    <script>
+    function createCookies() {
+  		var cookie1Value = document.getElementById("nameEntry").value;
+  		var cookie1Name = "name";
+        var cookie2Value = document.getElementById("userNameEntry").value;
+  		var cookie2Name = "username";
+  		document.cookie = cookie1Name + "=" + cookie1Value + ";" + cookie2Name + "=" + cookie2Value + ";";
+		}
+     function getCookie(cookie1Name) {
+  		var nameCookie = cookie1Name + "=";
+  		var cookieSplit = document.cookie.split(';');
+  		for(var i = 0; i <cookieSplit.length; i++) {
+    		var char = cookieSplit[i];
+    		while (char.charAt(0) == ' ') {
+      		char = char.substring(1);
+    		}
+    		if (char.indexOf(nameCookie) == 0) {
+      			return char.substring(nameCookie.length, char.length);
+    		}
+  		}
+  		return "";
+	}
+	function checkNameCookie() {
+  		var userName = getCookie("name");
+  		if (userName != "") {
+   			document.getElementById("textResponse").innerHTML="Welcome back, " + userName + "!";
+   			document.getElementById("cookieTester").style.display = "none";
+  		}
+ 	}
+    function clearInputField() {
+    	document.getElementById("textResponse").innerHTML = '';
+        }
+    </script>
+    <style>
+	body {
+		background-color: gray;
+    	}
+	a:link {
+  		color: white;
+	}
+	a:visited {
+  	  	color: yellow;
+	}
+	a:hover {
+  	  	color: black;
+	}
+	a:active {
+  	  	color: red;
+	}
+  label {
+        font-family: calibri;
+      	color: white;
+      	display: inline-block;
+      	width: 500px;
+  }
+	ul {
+      	font-family: calibri;
+      	display: inline;
+      	color: white;
+  }
+  li {
+      	background-color: transparent; 
+      	border-radius: 2px;
+  		  text-align: left;
+  		  font-size: 16px;
+  		  cursor: pointer;
+  }
+  li:hover {
+      	background-color: white;
+      	color: black;
+      	width: fit-content;
+  }
+  h1 {
+      	font-family: calibri;
+		  color: white;
+  }
+    	footer {
+      		font-family: calibri;
+      		font-size: 80%;
+		color: white;
+    	}	
+	p {
+    		font-family: calibri;
+		color: white;
+    	}
+	</style>
+	</head>
+	<body onload="checkNameCookie();">
+	<header>
+		<h1>Cookie Tester</h1>
+	</header>
+    <form name="cookieTester" id="cookieTester">
+    	<label for="nameEntry">Please enter your name:</label><br>
+    	<input id="nameEntry" name="nameEntry"><br><br>
+        <label for="userNameEntry">Please enter your username:</label><br>
+  		<input id="userNameEntry" name="userNameEntry"><br><br>
+        <input type="button" onclick="createCookies()" value="SUBMIT">
+		  <input type="reset" onclick="clearInputField()" value="RESET"><br>
+        </form>
+        <p id="textResponse"></p>
+	<footer>
+        <ul>
+        	<li><a href="hw7part1.html">Object Model & Cookies - Part 1</a></li>
+  		<li><a href="hw7.html">Return to Object Model & Cookies Main Page</a></li>
+	</ul>
+	</footer>
+	</body>
+</html>
