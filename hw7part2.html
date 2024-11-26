@@ -14,8 +14,7 @@
 		}
      function getCookie(cookie1Name) {
   		var nameCookie = cookie1Name + "=";
- 		var decodedNameCookie = decodeURIComponent(document.cookie);
-  		var cookieSplit = decodedNameCookie.split(';');
+  		var cookieSplit = document.cookie.split(';');
   		for(var i = 0; i <cookieSplit.length; i++) {
     		var char = cookieSplit[i];
     		while (char.charAt(0) == ' ') {
@@ -113,3 +112,5 @@
 	</footer>
 	</body>
 </html>
+
+
