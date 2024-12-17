@@ -111,6 +111,10 @@ function myFunction(xml) {
 </header>
 <p>The above button calls a JavaScript script, which houses two separate functions to create, request, and process receipt of XML data from a given server. The first function creates and pushes the XMLHttpRequest to ther server; in this case, it is the same server hosting this HTML file. It requests to "GET" the specific file from the server. Once received successfully back from the server, this function then sends it to the second function for processing.</p>
 <p>The second function first reads the document received. It then builds out the table from the provided XML information into HTML/CSS for the end user to see on screen. Only this data received via the XMLHttpRequest will need to be updated on the HTML page.</p>
+<header>
+<h2>Rest API</h2>
+</header>
+<p>The <a href="https://dictionaryapi.dev/?ref=freepublicapis.com">Free Dictionary API</a> allows users to submit words to get definitions, pronunciation, synonyms/antonyms, and define the type of speech (verb, noun, etc.). The three things that make this easy to deploy are that it's a free service with a high accuracy response, it requires no special key to access, and can easily be referenced in programming for any word that needs to be searched. The response will be provided in JSON, and the syntax allows any elements that need to be included/excluded from the HTML page from being added or redacted. The benefit of having this API on a site would give users faster access to reference keywords on the site without having to leave the site. This would maximize usage time on the site for each user, and would give them a positive experience that they may not be used to with other sites.</p>
 	<footer>
 		<p><a href="hw1.html">Click to go back to the assignment list.</a></p>
 		</footer>
