@@ -553,7 +553,7 @@ const R  = CX - 10;
 let rotation = 0;
 
 function totalWeight() {
-  return entries.reduce((s, e) => s + Math.max(1, parseFloat(e.weight) || 1), 0);
+  return entries.reduce((s, e) => s + Math.max(1.0, parseFloat(e.weight) || 1), 0);
 }
 
 function isValidHex(str) {
