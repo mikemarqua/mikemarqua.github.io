@@ -619,6 +619,8 @@ function spin() {
   spinning = true;
   document.getElementById('spin-btn').disabled = true;
 
+  rotation = ((rotation % (Math.PI * 2)) + Math.PI * 2) % (Math.PI * 2);
+ 
   const winnerIdx = pickWeightedRandom();
   const total     = totalWeight();
 
