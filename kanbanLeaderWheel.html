@@ -7,7 +7,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   :root {
     --bg: black;
     --surface: #17171c;
@@ -28,7 +27,6 @@
     flex-direction: column;
     align-items: center;
   }
-
   header {
     width: 100%;
     padding: 20px 40px;
@@ -37,22 +35,18 @@
     align-items: center;
     gap: 14px;
   }
-
   header h1 {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 2rem;
     letter-spacing: 3px;
     color: var(--accent);
   }
-
   header .dot {
     width: 10px; height: 10px;
     border-radius: 50%;
     background: var(--accent2);
     animation: pulse 1.5s ease-in-out infinite;
   }
-
-  /* Sync status indicator */
   #sync-status {
     margin-left: auto;
     font-size: 0.78rem;
@@ -62,23 +56,19 @@
     gap: 6px;
     font-family: 'DM Sans', sans-serif;
   }
-
   #sync-dot {
     width: 8px; height: 8px;
     border-radius: 50%;
     background: var(--muted);
     transition: background 0.3s;
   }
-
   #sync-dot.connected    { background: #4ade80; }
   #sync-dot.saving       { background: var(--accent); animation: pulse 0.6s ease-in-out infinite; }
   #sync-dot.disconnected { background: var(--accent2); }
-
   @keyframes pulse {
     0%, 100% { opacity: 1; transform: scale(1); }
     50% { opacity: 0.5; transform: scale(0.7); }
   }
-
   main {
     display: flex;
     gap: 40px;
@@ -89,7 +79,6 @@
     flex-wrap: wrap;
     justify-content: center;
   }
-
   .wheel-section {
     display: flex;
     flex-direction: column;
@@ -97,13 +86,11 @@
     gap: 20px;
     flex-shrink: 0;
   }
-
   .wheel-wrap {
     position: relative;
     width: 440px;
     height: 440px;
   }
-
   #wheel-canvas {
     width: 440px;
     height: 440px;
@@ -113,11 +100,9 @@
     transition: box-shadow 0.3s;
     display: block;
   }
-
   #wheel-canvas:hover {
     box-shadow: 0 0 0 6px var(--accent), 0 0 80px rgba(245,200,66,0.2);
   }
-
   .pointer {
     position: absolute;
     top: 50%;
@@ -130,7 +115,6 @@
     filter: drop-shadow(0 0 8px rgba(245,200,66,0.6));
     z-index: 10;
   }
-
   .center-cap {
     position: absolute;
     top: 50%; left: 50%;
@@ -146,10 +130,8 @@
     cursor: pointer;
     transition: border-color 0.2s;
   }
-
   .center-cap:hover { border-color: var(--accent); }
   .center-cap svg { width: 22px; height: 22px; fill: var(--accent); }
-
   #spin-btn {
     padding: 8px 28px;
     background: var(--accent);
@@ -163,14 +145,12 @@
     transition: transform 0.15s, box-shadow 0.15s;
     box-shadow: 0 4px 16px rgba(245,200,66,0.3);
   }
-
   #spin-btn:hover:not(:disabled) {
     transform: translateY(-2px);
     box-shadow: 0 6px 24px rgba(245,200,66,0.45);
   }
   #spin-btn:active:not(:disabled) { transform: translateY(0); }
   #spin-btn:disabled { opacity: 0.4; cursor: not-allowed; }
-
   #winner-overlay {
     display: none;
     position: fixed;
@@ -182,9 +162,7 @@
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
   }
-
   #winner-overlay.show { display: flex; }
-
   .winner-card {
     background: var(--surface);
     border: 1px solid var(--accent);
@@ -196,12 +174,10 @@
     position: relative;
     z-index: 201;
   }
-
   @keyframes popIn {
     from { transform: scale(0.5); opacity: 0; }
     to   { transform: scale(1);   opacity: 1; }
   }
-
   .winner-label {
     font-family: 'DM Sans', sans-serif;
     color: var(--muted);
@@ -210,7 +186,6 @@
     text-transform: uppercase;
     margin-bottom: 12px;
   }
-
   .winner-name {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 3.5rem;
@@ -219,9 +194,14 @@
     margin-bottom: 28px;
     line-height: 1;
   }
-
-  .winner-close {
-    padding: 10px 36px;
+  /* ── NEW: Two-button row in the winner popup ── */
+  .winner-buttons {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+  }
+  .btn-spin-again {
+    padding: 10px 28px;
     background: transparent;
     border: 1px solid var(--border);
     color: var(--text);
@@ -231,9 +211,29 @@
     font-size: 0.9rem;
     transition: border-color 0.2s, color 0.2s;
   }
-
-  .winner-close:hover { border-color: var(--accent); color: var(--accent); }
-
+  .btn-spin-again:hover {
+    border-color: var(--muted);
+    color: var(--muted);
+  }
+  .btn-accept {
+    padding: 10px 28px;
+    background: var(--accent);
+    border: 1px solid var(--accent);
+    color: #000;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: background 0.2s, box-shadow 0.2s, transform 0.15s;
+    box-shadow: 0 4px 16px rgba(245,200,66,0.3);
+  }
+  .btn-accept:hover {
+    background: #ffd95a;
+    box-shadow: 0 6px 24px rgba(245,200,66,0.45);
+    transform: translateY(-1px);
+  }
+  .btn-accept:active { transform: translateY(0); }
   .editor-section {
     flex: 1;
     min-width: 300px;
@@ -242,20 +242,17 @@
     flex-direction: column;
     gap: 20px;
   }
-
   .editor-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
-
   .editor-title {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 1.3rem;
     letter-spacing: 2px;
     color: var(--muted);
   }
-
   .add-btn {
     display: flex;
     align-items: center;
@@ -270,13 +267,11 @@
     font-size: 0.85rem;
     transition: border-color 0.2s, background 0.2s;
   }
-
   .add-btn:hover {
     border-color: var(--accent);
     background: rgba(245,200,66,0.06);
     color: var(--accent);
   }
-
   #entries-list {
     display: flex;
     flex-direction: column;
@@ -285,11 +280,9 @@
     overflow-y: auto;
     padding-right: 4px;
   }
-
   #entries-list::-webkit-scrollbar { width: 4px; }
   #entries-list::-webkit-scrollbar-track { background: var(--bg); }
   #entries-list::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
-
   .entry-row {
     display: flex;
     align-items: center;
@@ -300,9 +293,7 @@
     padding: 10px 12px;
     transition: border-color 0.2s;
   }
-
   .entry-row:hover { border-color: #3a3a50; }
-
   .color-swatch {
     width: 30px; height: 30px;
     border-radius: 6px;
@@ -315,10 +306,8 @@
     background: none;
     overflow: hidden;
   }
-
   .color-swatch::-webkit-color-swatch-wrapper { padding: 0; }
   .color-swatch::-webkit-color-swatch { border: none; border-radius: 4px; }
-
   .name-input {
     flex: 1;
     background: var(--bg);
@@ -332,18 +321,14 @@
     transition: border-color 0.2s;
     min-width: 0;
   }
-
   .name-input:focus { border-color: var(--accent); }
-
   .weight-wrap {
     display: flex;
     align-items: center;
     gap: 6px;
     flex-shrink: 0;
   }
-
   .weight-label { font-size: 0.72rem; color: var(--muted); white-space: nowrap; }
-
   .weight-input {
     width: 52px;
     background: var(--bg);
@@ -357,9 +342,7 @@
     text-align: center;
     transition: border-color 0.2s;
   }
-
   .weight-input:focus { border-color: var(--accent); }
-
   .remove-btn {
     background: none;
     border: none;
@@ -372,23 +355,19 @@
     transition: color 0.2s;
     flex-shrink: 0;
   }
-
   .remove-btn:hover { color: var(--accent2); }
-
   .hint {
     font-size: 0.78rem;
     color: var(--muted);
     text-align: center;
     padding-top: 4px;
   }
-
   #confetti-canvas {
     position: fixed;
     inset: 0;
     pointer-events: none;
     z-index: 99;
   }
-
   @media (max-width: 700px) {
     main { padding: 20px; gap: 30px; }
     .wheel-wrap { width: 300px; height: 300px; }
@@ -403,7 +382,6 @@
 </style>
 </head>
 <body>
-
 <header>
   <div class="dot"></div>
   <h1>Project Kanban Leader</h1>
@@ -412,9 +390,7 @@
     <span id="sync-label">Connecting…</span>
   </div>
 </header>
-
 <canvas id="confetti-canvas"></canvas>
-
 <main>
   <div class="wheel-section">
     <div class="wheel-wrap">
@@ -426,7 +402,6 @@
     </div>
     <button id="spin-btn">SPIN</button>
   </div>
-
   <div class="editor-section">
     <div class="editor-header">
       <span class="editor-title">Entries</span>
@@ -443,23 +418,23 @@
     <p class="hint">Changes sync instantly for everyone on this page.</p>
   </div>
 </main>
-
+<!-- ── Winner popup — Close replaced with Spin Again + Accept ── -->
 <div id="winner-overlay">
   <div class="winner-card">
     <div class="winner-label">🎉 Next Week's Kanban Leader</div>
     <div class="winner-name" id="winner-name-text">—</div>
-    <button class="winner-close" id="winner-close-btn">Close</button>
+    <div class="winner-buttons">
+      <button class="btn-spin-again" id="spin-again-btn">🔄 Spin Again</button>
+      <button class="btn-accept"     id="accept-btn">✅ Accept</button>
+    </div>
   </div>
 </div>
-
-<!-- Firebase SDK (compat version — works with plain script tags, no bundler needed) -->
+<!-- Firebase SDK -->
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
-
 <script>
 // ─────────────────────────────────────────────────────────────────────────────
-// 🔥 PASTE YOUR FIREBASE CONFIG HERE
-// Get this from: Firebase Console → Project Settings → Your Apps → Web
+// 🔥 Firebase Config
 // ─────────────────────────────────────────────────────────────────────────────
 const firebaseConfig = {
   apiKey:            "AIzaSyDHdFmekJkHun39LFEUL3Q1-IyiB3a2m2o",
@@ -470,12 +445,10 @@ const firebaseConfig = {
   messagingSenderId: "935835242388",
   appId:             "1:935835242388:web:26712b4c67e08e5dec0981"
 };
-
 firebase.initializeApp(firebaseConfig);
 const db          = firebase.database();
-const entriesRef  = db.ref('wheel/entries');   // path in your database
-const spinnerRef  = db.ref('wheel/spinning');  // tracks who is spinning
-
+const entriesRef  = db.ref('wheel/entries');
+const spinnerRef  = db.ref('wheel/spinning');
 // ─── Defaults ─────────────────────────────────────────────────────────────────
 const DEFAULTS = [
   { name: 'Chris M',  color: '#4f46e5', weight: 1 },
@@ -493,7 +466,8 @@ const DEFAULTS = [
 ];
 
 let entries = [];
-let isSyncing = false; // prevents re-render loops when we receive our own write
+// ── NEW: tracks which index won so Accept knows whose weight to reduce ──
+let currentWinnerIdx = null;
 
 // ─── Sync Status UI ───────────────────────────────────────────────────────────
 const syncDot   = document.getElementById('sync-dot');
@@ -509,29 +483,23 @@ function setSyncStatus(state) {
   }[state] || 'Connecting…';
 }
 
-// Monitor connection state
 db.ref('.info/connected').on('value', snap => {
   setSyncStatus(snap.val() ? 'connected' : 'disconnected');
 });
-
-// ─── Firebase Read (real-time listener) ───────────────────────────────────────
-// This fires ONCE on load, then again any time data changes in Firebase
+// ─── Firebase Read ─────────────────────────────────────────────────────────────
 entriesRef.on('value', snapshot => {
-    const data = snapshot.val();
+  const data = snapshot.val();
 
-  if (data && Array.isArray(data) && data.length) {
+if (data && Array.isArray(data) && data.length) {
     entries = data;
   } else {
-    // First time — no data in Firebase yet, write the defaults
     entries = DEFAULTS.map(d => ({ ...d }));
     saveToFirebase();
-    return; // listener will fire again after the write
+    return;
   }
-
-  renderList();
+renderList();
   drawWheel();
 });
-
 // ─── Firebase Write ───────────────────────────────────────────────────────────
 function saveToFirebase() {
   setSyncStatus('saving');
@@ -551,15 +519,12 @@ const CY = canvas.height / 2;
 const R  = CX - 10;
 
 let rotation = 0;
-
 function totalWeight() {
   return entries.reduce((s, e) => s + Math.max(1, parseFloat(e.weight) || 1), 0);
 }
-
 function isValidHex(str) {
   return typeof str === 'string' && /^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/.test(str);
 }
-
 function isLight(hex) {
   if (!isValidHex(hex)) return false;
   const c    = hex.replace('#', '');
@@ -581,7 +546,6 @@ function drawWheel() {
   const total = totalWeight();
   let startAngle = rotation;
 
-  // Shadow backing ring
   ctx.save();
   ctx.beginPath();
   ctx.arc(CX, CY, R + 6, 0, Math.PI * 2);
@@ -597,7 +561,6 @@ function drawWheel() {
     const end    = startAngle + slice;
     const mid    = startAngle + slice / 2;
 
-    // Slice fill
     ctx.beginPath();
     ctx.moveTo(CX, CY);
     ctx.arc(CX, CY, R, startAngle, end);
@@ -605,12 +568,10 @@ function drawWheel() {
     ctx.fillStyle   = isValidHex(entry.color) ? entry.color : '#888';
     ctx.fill();
 
-    // Divider stroke
     ctx.strokeStyle = 'rgba(0,0,0,0.25)';
     ctx.lineWidth   = 2;
     ctx.stroke();
 
-    // Label
     const labelR = R * 0.65;
     const tx = CX + labelR * Math.cos(mid);
     const ty = CY + labelR * Math.sin(mid);
@@ -634,7 +595,6 @@ function drawWheel() {
     startAngle = end;
   });
 
-  // Outer decorative ring
   ctx.beginPath();
   ctx.arc(CX, CY, R, 0, Math.PI * 2);
   ctx.strokeStyle = 'rgba(255,255,255,0.08)';
@@ -663,22 +623,16 @@ function spin() {
   const winnerIdx = pickWeightedRandom();
   const total     = totalWeight();
 
-  // Find the mid-angle of the winning slice
   let cumAngle = 0;
   for (let i = 0; i < winnerIdx; i++) {
     cumAngle += (Math.max(0.1, parseFloat(entries[i].weight) || 1) / total) * Math.PI * 2;
   }
   const sliceSize  = (Math.max(1, parseFloat(entries[winnerIdx].weight) || 1) / total) * Math.PI * 2;
   const winnerMid  = cumAngle + sliceSize / 2;
-
-  // Small random jitter so it doesn't always land dead-center
   const jitter     = (Math.random() - 0.5) * sliceSize * 0.8;
   const targetRot  = -winnerMid - jitter;
-
-  // Add several full rotations for drama
   const extraSpins = 6 + Math.floor(Math.random() * 4);
   const target     = targetRot + extraSpins * Math.PI * 2;
-
   const startRot   = rotation;
   const duration   = 4000 + Math.random() * 1500;
   const startTime  = performance.now();
@@ -709,20 +663,35 @@ function spin() {
 
 // ─── Winner Modal ─────────────────────────────────────────────────────────────
 function showWinner(idx) {
+  currentWinnerIdx = idx;
   const name = entries[idx]?.name || '—';
   document.getElementById('winner-name-text').textContent = name;
   document.getElementById('winner-overlay').classList.add('show');
   launchConfetti(entries[idx]?.color || '#f5c842');
 }
 
-document.getElementById('winner-close-btn').addEventListener('click', () => {
+function closeWinner() {
   document.getElementById('winner-overlay').classList.remove('show');
+}
+
+// ── "Spin Again" — just closes the popup ──
+document.getElementById('spin-again-btn').addEventListener('click', () => {
+  closeWinner();
 });
 
-document.getElementById('winner-overlay').addEventListener('click', (e) => {
-  if (e.target === e.currentTarget) {
-    e.currentTarget.classList.remove('show');
+// ── "Accept" — reduces winner's weight by 1 (min 1), then closes ──
+document.getElementById('accept-btn').addEventListener('click', () => {
+  if (currentWinnerIdx !== null && entries[currentWinnerIdx]) {
+    const current = Math.max(1, parseFloat(entries[currentWinnerIdx].weight) || 1);
+    entries[currentWinnerIdx].weight = Math.max(1, current - 1);
+    saveToFirebase();
   }
+  closeWinner();
+});
+
+// Close on backdrop click
+document.getElementById('winner-overlay').addEventListener('click', (e) => {
+  if (e.target === e.currentTarget) closeWinner();
 });
 
 // ─── Confetti ─────────────────────────────────────────────────────────────────
@@ -792,8 +761,7 @@ const PALETTE = [
 ];
 
 function renderList() {
-  // Remember which input is focused so we don't yank focus during remote updates
-  const focused = document.activeElement;
+  const focused      = document.activeElement;
   const focusedRow   = focused?.closest('.entry-row');
   const focusedIndex = focusedRow ? [...list.children].indexOf(focusedRow) : -1;
   const focusedField = focused?.dataset?.field;
@@ -804,7 +772,6 @@ function renderList() {
     const row = document.createElement('div');
     row.className = 'entry-row';
 
-    // Color picker
     const colorPicker     = document.createElement('input');
     colorPicker.type      = 'color';
     colorPicker.value     = isValidHex(entry.color) ? entry.color : '#f5c842';
@@ -817,7 +784,6 @@ function renderList() {
       drawWheel();
     });
 
-    // Name input
     const nameInput           = document.createElement('input');
     nameInput.type            = 'text';
     nameInput.value           = entry.name;
@@ -830,7 +796,6 @@ function renderList() {
       drawWheel();
     });
 
-    // Weight
     const weightWrap      = document.createElement('div');
     weightWrap.className  = 'weight-wrap';
 
@@ -854,7 +819,6 @@ function renderList() {
     weightWrap.appendChild(weightLabel);
     weightWrap.appendChild(weightInput);
 
-    // Remove button
     const removeBtn       = document.createElement('button');
     removeBtn.className   = 'remove-btn';
     removeBtn.title       = 'Remove';
@@ -871,8 +835,6 @@ function renderList() {
       }
       entries.splice(i, 1);
       saveToFirebase();
-      // renderList & drawWheel will be called automatically
-      // when Firebase fires the updated snapshot back to us
     });
 
     row.appendChild(colorPicker);
@@ -881,12 +843,10 @@ function renderList() {
     row.appendChild(removeBtn);
     list.appendChild(row);
 
-    // Restore focus to the field that was active before the re-render
     if (i === focusedIndex && focusedField) {
       const target = row.querySelector(`[data-field="${focusedField}"]`);
       if (target) {
         target.focus();
-        // Restore cursor position for text inputs
         if (target.type === 'text' && focused.selectionStart !== undefined) {
           target.setSelectionRange(focused.selectionStart, focused.selectionEnd);
         }
@@ -906,9 +866,6 @@ document.getElementById('add-entry-btn').addEventListener('click', () => {
 // ─── Spin Button Listeners ────────────────────────────────────────────────────
 document.getElementById('spin-btn').addEventListener('click', spin);
 document.getElementById('spin-center').addEventListener('click', spin);
-
-// Note: no manual init needed — the Firebase `entriesRef.on('value')` listener
-// above fires automatically on page load and populates entries + renders everything.
 </script>
 </body>
 </html>
