@@ -553,7 +553,7 @@ const R  = CX - 10;
 let rotation = 0;
 
 function totalWeight() {
-  return entries.reduce((s, e) => s + Math.max(1.0, parseFloat(e.weight) || 1), 0);
+  return entries.reduce((s, e) => s + Math.max(1, parseFloat(e.weight) || 1), 0);
 }
 
 function isValidHex(str) {
@@ -592,7 +592,7 @@ function drawWheel() {
   ctx.restore();
 
   entries.forEach((entry) => {
-    const weight = Math.max(0.1, parseFloat(entry.weight) || 1);
+    const weight = Math.max(1, parseFloat(entry.weight) || 1);
     const slice  = (weight / total) * Math.PI * 2;
     const end    = startAngle + slice;
     const mid    = startAngle + slice / 2;
@@ -649,7 +649,7 @@ function pickWeightedRandom() {
   const total = totalWeight();
   let r = Math.random() * total;
   for (let i = 0; i < entries.length; i++) {
-    r -= Math.max(0.1, parseFloat(entries[i].weight) || 1);
+    r -= Math.max(1, parseFloat(entries[i].weight) || 1);
     if (r <= 0) return i;
   }
   return entries.length - 1;
@@ -668,7 +668,7 @@ function spin() {
   for (let i = 0; i < winnerIdx; i++) {
     cumAngle += (Math.max(0.1, parseFloat(entries[i].weight) || 1) / total) * Math.PI * 2;
   }
-  const sliceSize  = (Math.max(0.1, parseFloat(entries[winnerIdx].weight) || 1) / total) * Math.PI * 2;
+  const sliceSize  = (Math.max(1, parseFloat(entries[winnerIdx].weight) || 1) / total) * Math.PI * 2;
   const winnerMid  = cumAngle + sliceSize / 2;
 
   // Small random jitter so it doesn't always land dead-center
@@ -840,8 +840,8 @@ function renderList() {
 
     const weightInput         = document.createElement('input');
     weightInput.type          = 'number';
-    weightInput.min           = '0.1';
-    weightInput.step          = '0.1';
+    weightInput.min           = '1';
+    weightInput.step          = '1';
     weightInput.value         = entry.weight;
     weightInput.className     = 'weight-input';
     weightInput.dataset.field = 'weight';
